@@ -59,7 +59,7 @@ post '/callback' do
 
           require './app/weather/area'
           weather_area = Weather_area.new
-          template = weather_area.prefectures(pref)
+          template = weather_area.prefectures(pref1)
           client.reply_message(event['replyToken'], template)
 
           # 確認用
