@@ -45,7 +45,7 @@ post '/callback' do
           # text4 = ""
 
           require './app/0form/default'
-          default_text = String.new
+          default_text = String.new()
           default_text.default_text
 
           if city = "" || city = "次へ"
@@ -117,8 +117,8 @@ post '/callback' do
             title = "メニューを選んで下さい"
             text1 = "天気モード"
             text2 = "オウム返しモード"
-            text3 = ""
-            text4 = ""
+            # text3 = ""
+            # text4 = ""
             # form = Form.new
             template = form.template(title, text1, text2, text3, text4)
             client.reply_message(event['replyToken'], template)

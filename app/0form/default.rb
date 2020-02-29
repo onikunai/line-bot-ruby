@@ -8,3 +8,6 @@ class String
   end
 
 end
+
+default = String.new
+puts default.default_text
