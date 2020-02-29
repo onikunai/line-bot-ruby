@@ -17,18 +17,18 @@ class Weather_area
         text: '北海道'
       }
     elsif pref == '東京都'
-      pref = '東京都'
+      # pref = '東京都'
       message = {
         type: 'text',
         text: '東京都'
       }
     elsif pref == "兵庫県"
       text1 = "神戸"
-      text2 = "豊岡"
-      text3 = ""
-      text4 = ""
-      form = Form.new
-      template = form.template(title, text1, text2, text3, text4)
+      # text2 = "豊岡"
+      # text3 = ""
+      # text4 = ""
+      # form = Form.new
+      # template = form.template(title, text1, text2, text3, text4)
     else
       pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
       message = {

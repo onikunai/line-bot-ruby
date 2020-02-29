@@ -53,8 +53,9 @@ post '/callback' do
           # -----------------------------------
           require './app/weather/area'
           weather_area = Weather_area.new
-          template = weather_area.prefectures(pref)
-          client.reply_message(event['replyToken'], template)
+          message = weather_area.prefectures(pref)
+          # client.reply_message(event['replyToken'], template)
+          client.reply_message(event['replyToken'], message)
           # city = event.message['text']
           # else city == "神戸"
           #   require './app/weather/app_weather'
