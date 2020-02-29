@@ -326,8 +326,8 @@ class Weather_area
     elsif pref == "兵庫県"
       text1 = "神戸"
       text2 = "豊岡"
-      text3 = ""
-      text4 = ""
+      # text3 = ""
+      # text4 = ""
       form = Form.new
       template = form.template(title, text1, text2, text3, text4)
     else
