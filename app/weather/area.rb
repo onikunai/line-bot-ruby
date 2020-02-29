@@ -1,10 +1,7 @@
 # 参照ファイル
 # require './app/0form/template'
 
-text1 = ""
-text2 = ""
-text3 = ""
-text4 = ""
+
 
 # class Weather_area
 #   def prefectures(pref)
@@ -308,6 +305,11 @@ text4 = ""
 # end
 
 class Weather_area
+  text1 = ""
+  text2 = ""
+  text3 = ""
+  text4 = ""
+  
   def prefectures(pref)
     title = '地域を選んで下さい'
 
