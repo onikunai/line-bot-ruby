@@ -1,7 +1,13 @@
+# 参照ライブラリ
 require 'sinatra'
 require 'line/bot'
 
+# 参照ファイル
+require './app/0form/template'
+
+# 宣言
 menu_index = ""
+form = Form.new
 
 # 微小変更部分！確認用。
 get '/' do
@@ -14,60 +20,6 @@ def client
     config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
   }
 end
-
-#テンプレートは、max4つ
-def template_menu
-  {
-    "type": "template",
-    "altText": "this is a buttons template",
-    "template": {
-        "type": "buttons",
-        "text": "メニューを選んで下さい",
-        "actions": [
-            {
-              "type": "message",
-              # Botから送られてきたメッセージに表示される文字列です。
-              "label": "天気が知りたい",
-              # ボタンを押した時にBotに送られる文字列です。
-              "text": "天気モード"
-            },
-            {
-              "type": "message",
-              "label": "オウム返しモード",
-              "text": "オウム返しモード"
-            }
-        ]
-    }
-  }
-end
-
-# うまくいった
-# class Weather_area
-#   def template_prefectures1
-#     {
-#       "type": "template",
-#       "altText": "this is a buttons template",
-#       "template": {
-#           "type": "buttons",
-#           "text": "都道府県を選んで下さい",
-#           "actions": [
-#               {
-#                 "type": "message",
-#                 # Botから送られてきたメッセージに表示される文字列です。
-#                 "label": "北海道",
-#                 # ボタンを押した時にBotに送られる文字列です。
-#                 "text": "北海道"
-#               },
-#               {
-#                 "type": "message",
-#                 "label": "アキバ",
-#                 "text": "アキバ"
-#               }
-#           ]
-#       }
-#     }
-#   end
-# end
 
 post '/callback' do
   body = request.body.read
@@ -83,49 +35,75 @@ post '/callback' do
     when Line::Bot::Event::Message
       case event.type
       when Line::Bot::Event::MessageType::Text
+        # 天気モード
+        if menu_index == "天気"
+          menu_index = ""
+
+          # text1 = ""
+          # text2 = ""
+          # text3 = ""
+          # text4 = ""
+
+          # require './app/0form/default'
+          # default_text = String.new()
+          # default_text.default_text
+
+          if city = "" || city = "次へ"
+            pref = event.message['text']
+          end
+
+          # 確認用
+          # client.reply_message(event['replyToken'], message = {
+          #   type: 'text',
+          #   text: pref,
+          # })
+          # -----------------------------------
+
+          require './app/weather/area'
+          weather_area = Weather_area.new
+          template = weather_area.prefectures(pref)
+          # template = weather_area.prefectures(pref, form, text1, text2, text3, text4)
+          client.reply_message(event['replyToken'], template)
+
+          # 確認用
+          # message = weather_area.prefectures(pref)
+          # client.reply_message(event['replyToken'], message)
+          # -----------------------------------
+
+
+          # city = event.message['text']
+          # else city == "神戸"
+          #   require './app/weather/app_weather'
+          #   weather_say = Weather_say.new
+          #   message = weather_say.message
+          #   client.reply_message(event['replyToken'], message)
+          # end
         # オウム返しモード
-        if menu_index == "オウム返し"
+        elsif menu_index == "オウム返し"
           if event.message['text'] == 'また明日'
             menu_index = ""
-            client.reply_message(event['replyToken'],   message = {
+            client.reply_message(event['replyToken'], message = {
               type: 'text',
               text: 'オウム返しモードを終了します'
             })
           else
-            client.reply_message(event['replyToken'],   message = {
+            client.reply_message(event['replyToken'], message = {
               type: 'text',
               text: event.message['text']
             })
           end
-        # 天気モード
-        elsif menu_index == "天気"
-          # case event.message['text']
-          #   when "次へ1"
-          #     client.reply_message(event['replyToken'], message = {
-          #       type: 'text',
-          #       text: "次へ1は、終わり"
-          #     })
-          # end
-          menu_index = ""
-          # require './app/weather/area'
-          # weather_area = Weather_area.new
-          # temp_pref = weather_area.template_prefectures1
-          # client.reply_message(event['replyToken'], template = temp_pref)
-          # うまくいった
-          # client.reply_message(event['replyToken'], template = template_prefectures1)
+
         # menu_index選び
         else
           # 天気:template_prefectures1
           if event.message['text'] == '天気モード'
             menu_index = "天気"
-            # require './app/weather/area'
-            # weather_area = Weather_area.new
-            # template_prefectures1 = weather_area.template_prefectures1
-            # client.reply_message(event['replyToken'], template = template_prefectures1)
-            require './app/weather/area'
-            weather_area = Weather_area.new
-            temp_pref = weather_area.template_prefectures1
-            client.reply_message(event['replyToken'], template = temp_pref)
+            city = ""
+            client.reply_message(event['replyToken'], message = {
+              type: 'text',
+              text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県など"
+            })
+
           # オウム返しモード開始
           elsif event.message['text'] == 'オウム返しモード'
             menu_index = "オウム返し"
@@ -133,12 +111,21 @@ post '/callback' do
               type: 'text',
               text: "オウム返しモードを開始します。\n終了するには、「また明日」と送信して下さい"
             })
+
           #メニュー表示
           else
             menu_index = ""
-            client.reply_message(event['replyToken'], template = template_menu)
+            title = "メニューを選んで下さい"
+            text1 = "天気モード"
+            text2 = "オウム返しモード"
+            # text3 = ""
+            # text4 = ""
+            # form = Form.new
+            template = form.template(title, text1, text2)
+            client.reply_message(event['replyToken'], template)
           end
         end
+
       # メッセージ以外の対応
       else
         menu_index = ""
