@@ -41,8 +41,9 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == "天気"
-          # 確認用後ほど消す
-          pref = event.message['text']
+          if city = ""
+            pref = event.message['text']
+          end
           client.reply_message(event['replyToken'], message = {
             type: 'text',
             text: pref,
