@@ -44,9 +44,9 @@ post '/callback' do
           # text3 = ""
           # text4 = ""
 
-          require './app/0form/default'
-          default_text = String.new()
-          default_text.default_text
+          # require './app/0form/default'
+          # default_text = String.new()
+          # default_text.default_text
 
           if city = "" || city = "次へ"
             pref = event.message['text']
@@ -61,7 +61,8 @@ post '/callback' do
 
           require './app/weather/area'
           weather_area = Weather_area.new
-          template = weather_area.prefectures(pref, form, text1, text2, text3, text4)
+          template = weather_area.prefectures(pref, form)
+          # template = weather_area.prefectures(pref, form, text1, text2, text3, text4)
           client.reply_message(event['replyToken'], template)
 
           # 確認用
