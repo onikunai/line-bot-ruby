@@ -307,12 +307,12 @@
 class Weather_area
 
 
-  def prefectures(pref)
-    title = '地域を選んで下さい'
-    text1 = ""
-    text2 = ""
-    text3 = ""
-    text4 = ""
+  def prefectures(pref, text1, text2, text3, text4)
+    title = "地域を選んで下さい"
+    # text1 = ""
+    # text2 = ""
+    # text3 = ""
+    # text4 = ""
 
     if pref == '北海道'
       pref = '北海道'

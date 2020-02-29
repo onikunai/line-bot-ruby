@@ -42,10 +42,11 @@ post '/callback' do
         # 天気モード
         if menu_index == "天気"
           menu_index = ""
-          # text1 = ""
-          # text2 = ""
-          # text3 = ""
-          # text4 = ""
+
+          text1 = ""
+          text2 = ""
+          text3 = ""
+          text4 = ""
           if city = "" || city = "次へ"
             pref = event.message['text']
           end
@@ -59,7 +60,7 @@ post '/callback' do
 
           require './app/weather/area'
           weather_area = Weather_area.new
-          template = weather_area.prefectures(pref)
+          template = weather_area.prefectures(pref, text1, text2, text3, text4)
           client.reply_message(event['replyToken'], template)
 
           # 確認用
