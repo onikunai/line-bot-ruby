@@ -1,6 +1,11 @@
 # 参照ファイル
 require './app/0form/template'
 
+text1 = ""
+text2 = ""
+text3 = ""
+text4 = ""
+
 class Weather_area
   def prefectures(pref)
     title = '地域を選んで下さい'
@@ -17,9 +22,9 @@ class Weather_area
         type: 'text',
         text: '東京都'
       }
-    elsif pref == '兵庫県'
-      text1 = '神戸'
-      text2 = '豊岡'
+    elsif pref == "兵庫県"
+      text1 = "神戸"
+      text2 = "豊岡"
       form = Form.new
       template = form.template(title, text1, text2, text3, text4)
     else
