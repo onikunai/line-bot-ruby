@@ -3,6 +3,7 @@ require 'resolv'
 require 'json'
 require 'yaml'
 require './app/weather/info'
+require './app/weather/area'
 
 class Weather
 
@@ -27,7 +28,6 @@ class Weather
     # 拠点コード
     # keyWord = YAML.load_file('./config/config.yml')["location-code"]
     # keyWord = "130010"
-    require './app/weather/area'
     weather_area = Weather_area.new
     keyWord = weather_area.city_code(city)
     # 天気API URL取得
