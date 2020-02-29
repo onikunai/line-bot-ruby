@@ -39,18 +39,11 @@ post '/callback' do
         if menu_index == "天気"
           menu_index = ""
 
-          # text1 = ""
-          # text2 = ""
-          # text3 = ""
-          # text4 = ""
-
-          # require './app/0form/default'
-          # default_text = String.new()
-          # default_text.default_text
-
           if city = "" || city = "次へ"
-            pref = event.message['text']
-          end
+            if city = ""
+              pref = event.message['text']
+            end
+          
 
           # 確認用
           # client.reply_message(event['replyToken'], message = {
@@ -69,15 +62,10 @@ post '/callback' do
           # message = weather_area.prefectures(pref)
           # client.reply_message(event['replyToken'], message)
           # -----------------------------------
+          else
+            
+          end
 
-
-          # city = event.message['text']
-          # else city == "神戸"
-          #   require './app/weather/app_weather'
-          #   weather_say = Weather_say.new
-          #   message = weather_say.message
-          #   client.reply_message(event['replyToken'], message)
-          # end
         # オウム返しモード
         elsif menu_index == "オウム返し"
           if event.message['text'] == 'また明日'
