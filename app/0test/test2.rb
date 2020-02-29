@@ -41,10 +41,13 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == "天気"
-          client.reply_message(event['replyToken'], message = {
-            type: 'text',
-            text: '天気モードまで来たよ'
-          })
+          # 確認用後ほど消す
+          # client.reply_message(event['replyToken'], message = {
+          #   type: 'text',
+          #   text: '天気モードまで来たよ'
+          # })
+          pref = event.message['text']
+          client.reply_message(event['replyToken'], message = pref)
           # if city == "" || city == "次へ"
             # menu_index = ""
             # if city == ""
