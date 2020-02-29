@@ -4,6 +4,7 @@ require 'line/bot'
 
 # 参照ファイル
 require './app/0form/template'
+require './app/0form/default'
 
 # 宣言
 menu_index = ""
