@@ -80,7 +80,7 @@ post '/callback' do
           # 天気:template_prefectures1
           if event.message['text'] == '天気モード'
             menu_index = "天気"
-            city = "次へ"
+            city = ""
             client.reply_message(event['replyToken'], message = {
               type: 'text',
               text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県など"
