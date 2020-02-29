@@ -7,11 +7,7 @@ require './app/0form/template'
 
 # 宣言
 menu_index = ""
-# city = ""
-text1 = ""
-text2 = ""
-text3 = ""
-text4 = ""
+form = Form.new
 
 # 微小変更部分！確認用。
 get '/' do
@@ -42,10 +38,11 @@ post '/callback' do
         # 天気モード
         if menu_index == "天気"
           menu_index = ""
-          # text1 = ""
-          # text2 = ""
-          # text3 = ""
-          # text4 = ""
+
+          text1 = ""
+          text2 = ""
+          text3 = ""
+          text4 = ""
           if city = "" || city = "次へ"
             pref = event.message['text']
           end
@@ -59,7 +56,7 @@ post '/callback' do
 
           require './app/weather/area'
           weather_area = Weather_area.new
-          template = weather_area.prefectures(pref)
+          template = weather_area.prefectures(pref, form, text1, text2, text3, text4)
           client.reply_message(event['replyToken'], template)
 
           # 確認用
@@ -117,7 +114,7 @@ post '/callback' do
             text2 = "オウム返しモード"
             text3 = ""
             text4 = ""
-            form = Form.new
+            # form = Form.new
             template = form.template(title, text1, text2, text3, text4)
             client.reply_message(event['replyToken'], template)
           end
