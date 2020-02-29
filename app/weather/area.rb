@@ -331,7 +331,7 @@ class Weather_area
       text2 = "豊岡"
       # text3 = ""
       # text4 = ""
-      # form = Form.new
+      form = Form.new
       template = form.template(title, text1, text2, text3, text4)
     else
       pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
