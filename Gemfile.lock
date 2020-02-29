@@ -41,7 +41,7 @@ GEM
     rack-protection (2.0.8.1)
       rack
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -94,7 +94,7 @@ DEPENDENCIES
   httpclient
   line-bot-api!
   pry-rails
-  rake (~> 10.4)
+  rake (~> 13.0)
   rest-client
   rspec (~> 3.0)
   rubocop (~> 0.56.0)
