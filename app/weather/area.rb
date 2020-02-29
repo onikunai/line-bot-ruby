@@ -1,10 +1,10 @@
 # 参照ファイル
-require './app/0form/template'
+# require './app/0form/template'
 
-text1 = ""
-text2 = ""
-text3 = ""
-text4 = ""
+# text1 = ""
+# text2 = ""
+# text3 = ""
+# text4 = ""
 
 class Weather_area
   def prefectures(pref)
@@ -25,6 +25,8 @@ class Weather_area
     elsif pref == "兵庫県"
       text1 = "神戸"
       text2 = "豊岡"
+      text3 = ""
+      text4 = ""
       form = Form.new
       template = form.template(title, text1, text2, text3, text4)
     else
