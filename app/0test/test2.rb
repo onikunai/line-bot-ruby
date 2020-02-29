@@ -43,9 +43,10 @@ post '/callback' do
         if menu_index == "天気"
           if city == "" || city == "次へ"
             # menu_index = ""
-            if city == ""
-              pref = event.message['text']
-            end
+            # if city == ""
+            #   pref = event.message['text']
+            # end
+            pref = event.message['text']
             require './app/weather/area'
             weather_area = Weather_area.new
             template = weather_area.prefectures(pref)
