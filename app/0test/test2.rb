@@ -42,12 +42,12 @@ post '/callback' do
         # 天気モード
         if menu_index == "天気"
           # 確認用後ほど消す
-          # client.reply_message(event['replyToken'], message = {
-          #   type: 'text',
-          #   text: '天気モードまで来たよ'
-          # })
           pref = event.message['text']
-          client.reply_message(event['replyToken'], message = pref)
+          client.reply_message(event['replyToken'], message = {
+            type: 'text',
+            text: pref,
+          })
+
           # if city == "" || city == "次へ"
             # menu_index = ""
             # if city == ""
