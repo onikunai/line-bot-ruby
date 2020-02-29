@@ -8,10 +8,6 @@ require './app/0form/template'
 # 宣言
 menu_index = ""
 form = Form.new
-text1 = ""
-text2 = ""
-text3 = ""
-text4 = ""
 
 # 微小変更部分！確認用。
 get '/' do
@@ -47,6 +43,9 @@ post '/callback' do
           # text2 = ""
           # text3 = ""
           # text4 = ""
+          default_text = Default.new
+          default_text.default_text(text1, text2, text3, text4)
+
           if city = "" || city = "次へ"
             pref = event.message['text']
           end
