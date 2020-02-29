@@ -41,7 +41,7 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == "天気"
-          if city = ""
+          if city = "" || city = "次へ"
             pref = event.message['text']
           end
           client.reply_message(event['replyToken'], message = {
@@ -80,7 +80,7 @@ post '/callback' do
           # 天気:template_prefectures1
           if event.message['text'] == '天気モード'
             menu_index = "天気"
-            city = ""
+            city = "次へ"
             client.reply_message(event['replyToken'], message = {
               type: 'text',
               text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県など"
