@@ -305,11 +305,8 @@
 # end
 
 class Weather_area
-  text1 = ""
-  text2 = ""
-  text3 = ""
-  text4 = ""
-  
+
+
   def prefectures(pref)
     title = '地域を選んで下さい'
 
