@@ -307,7 +307,7 @@
 class Weather_area
 
 
-  def prefectures(pref1)
+  def prefectures(pref)
     title = '地域を選んで下さい'
     text1 = ""
     text2 = ""
@@ -326,7 +326,7 @@ class Weather_area
         type: 'text',
         text: '東京都'
       }
-    elsif pref1 == "兵庫県"
+    elsif pref == "兵庫県"
       text1 = "神戸"
       text2 = "豊岡"
       # text3 = ""
