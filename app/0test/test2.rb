@@ -7,7 +7,7 @@ require './app/0form/template'
 
 # 宣言
 menu_index = ""
-city = ""
+# city = ""
 text1 = ""
 text2 = ""
 text3 = ""
@@ -41,7 +41,7 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == "天気"
-          if city = ""  || city = "神戸"
+          if city = ""
             pref = event.message['text']
           end
           client.reply_message(event['replyToken'], message = {
@@ -49,13 +49,6 @@ post '/callback' do
             text: pref,
           })
 
-          # if city == "" || city == "次へ"
-            # menu_index = ""
-            # if city == ""
-            #   pref = event.message['text']
-            # end
-
-            # pref = event.message['text']
             # require './app/weather/area'
             # weather_area = Weather_area.new
             # template = weather_area.prefectures(pref)
