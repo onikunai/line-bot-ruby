@@ -1,10 +1,10 @@
 # 参照ファイル
 # require './app/0form/template'
 
-# text1 = ""
-# text2 = ""
-# text3 = ""
-# text4 = ""
+text1 = ""
+text2 = ""
+text3 = ""
+text4 = ""
 
 # class Weather_area
 #   def prefectures(pref)
