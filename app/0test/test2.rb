@@ -45,17 +45,25 @@ post '/callback' do
           if city = "" || city = "次へ"
             pref = event.message['text']
           end
+
           # 確認用
           # client.reply_message(event['replyToken'], message = {
           #   type: 'text',
           #   text: pref,
           # })
           # -----------------------------------
+
           require './app/weather/area'
           weather_area = Weather_area.new
-          message = weather_area.prefectures(pref)
-          # client.reply_message(event['replyToken'], template)
-          client.reply_message(event['replyToken'], message)
+          template = weather_area.prefectures(pref)
+          client.reply_message(event['replyToken'], template)
+
+          # 確認用
+          # message = weather_area.prefectures(pref)
+          # client.reply_message(event['replyToken'], message)
+          # -----------------------------------
+
+
           # city = event.message['text']
           # else city == "神戸"
           #   require './app/weather/app_weather'
