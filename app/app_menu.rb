@@ -4,7 +4,6 @@ require 'line/bot'
 
 # 参照ファイル
 require './app/0form/template'
-require './app/0form/default'
 
 # 宣言
 menu_index = ""
@@ -44,8 +43,10 @@ post '/callback' do
           # text2 = ""
           # text3 = ""
           # text4 = ""
+
+          require './app/0form/default'
           default_text = Default.new
-          default_text.default_text(text1, text2, text3, text4)
+          default_text.default_text
 
           if city = "" || city = "次へ"
             pref = event.message['text']
@@ -116,8 +117,8 @@ post '/callback' do
             title = "メニューを選んで下さい"
             text1 = "天気モード"
             text2 = "オウム返しモード"
-            text3 = "ダイヤモンだ"
-            text4 = "たかもだよ"
+            text3 = ""
+            text4 = ""
             # form = Form.new
             template = form.template(title, text1, text2, text3, text4)
             client.reply_message(event['replyToken'], template)
