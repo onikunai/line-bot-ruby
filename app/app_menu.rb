@@ -120,7 +120,7 @@ post '/callback' do
             # text3 = ""
             # text4 = ""
             # form = Form.new
-            template = form.template(title, text1, text2, text3, text4)
+            template = form.template(title, text1, text2)
             client.reply_message(event['replyToken'], template)
           end
         end
