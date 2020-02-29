@@ -1,4 +1,4 @@
-class Default
+class String
 
   def default_text
     text1 = ""

@@ -45,7 +45,7 @@ post '/callback' do
           # text4 = ""
 
           require './app/0form/default'
-          default_text = Default.new
+          default_text = String.new
           default_text.default_text
 
           if city = "" || city = "次へ"
