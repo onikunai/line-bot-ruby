@@ -7,6 +7,7 @@ require './app/0form/template'
 
 # 宣言
 menu_index = ""
+form = Form.new
 # city = ""
 # text1 = ""
 # text2 = ""
@@ -118,7 +119,7 @@ post '/callback' do
             text2 = "オウム返しモード"
             text3 = ""
             text4 = ""
-            form = Form.new
+            # form = Form.new
             template = form.template(title, text1, text2, text3, text4)
             client.reply_message(event['replyToken'], template)
           end
