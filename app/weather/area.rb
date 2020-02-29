@@ -33,6 +33,7 @@ class Weather_area
 
   # 拠点コード
   def city_code(city)
+    city = "神戸"
     case city
     # 道北
     when "稚内"
