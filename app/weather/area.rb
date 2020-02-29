@@ -307,8 +307,9 @@
 class Weather_area
 
 
-  def prefectures(pref, form = Form.new)
+  def prefectures(pref)
     title = "地域を選んで下さい"
+    form = Form.new
 
     if pref == '北海道'
       pref = '北海道'
