@@ -323,6 +323,7 @@ class Weather_area
       # pref = "兵庫県"
       text1 = "神戸"
       text2 = "豊岡"
+      text3 = "次へ"
       template = form.template(title, text1, text2)
     else
       pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
