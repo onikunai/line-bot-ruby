@@ -47,17 +47,21 @@ post '/callback' do
           if city == '' || city == '次へ' then
             if city_flag == '' then
               pref = event.message['text']
+              client.reply_message(event['replyToken'], message = {
+                type: 'text',
+                text: pref,
+              })
               # pref_flag = event.message['text']
             end
             # pref = '兵庫県'
           
             # 確認用
-            if city_flag == '入力済み' then
-              client.reply_message(event['replyToken'], message = {
-                type: 'text',
-                text: pref,
-              })
-            end
+            # if city_flag == '入力済み' then
+            #   client.reply_message(event['replyToken'], message = {
+            #     type: 'text',
+            #     text: pref,
+            #   })
+            # end
             # -----------------------------------
             city = '入力済み'
             city_flag = '入力済み'
@@ -127,7 +131,7 @@ post '/callback' do
             })
 
           #メニュー表示
-          else menu_index == ""
+          else
             # 判定フラグに代入
             menu_index = ''
             #----------------------------
