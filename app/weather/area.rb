@@ -320,7 +320,7 @@ class Weather_area
         text: '東京都'
       }
     # elsif pref.include?("兵庫")
-    when '兵庫県'
+    when include?("兵庫")
       if city == "次へ"
         text1 = "豊岡"
         text2 = ""
