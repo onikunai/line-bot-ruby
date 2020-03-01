@@ -47,13 +47,14 @@ post '/callback' do
             #   pref = event.message['text']
             # end
           pref = 'city失敗'
+          pref = event.message['text']
           # if city == ''
           #   pref = event.message['text']
           # end
-          if city == ''
-            pref = event.message['text']
-          else
-          end
+          # if city == ''
+          #   pref = event.message['text']
+          # else
+          # end
           
           # 確認用
           client.reply_message(event['replyToken'], message = {
