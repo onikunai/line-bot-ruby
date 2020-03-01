@@ -48,17 +48,17 @@ post '/callback' do
             pref = event.message['text']
           
           # 確認用
-          # client.reply_message(event['replyToken'], message = {
-          #   type: 'text',
-          #   text: pref,
-          # })
+          client.reply_message(event['replyToken'], message = {
+            type: 'text',
+            text: pref,
+          })
           # -----------------------------------
 
-            require './app/weather/area'
-            weather_area = Weather_area.new
-            template = weather_area.prefectures(pref, city)
-            client.reply_message(event['replyToken'], template)
-            city = "入力済み"
+            # require './app/weather/area'
+            # weather_area = Weather_area.new
+            # template = weather_area.prefectures(pref, city)
+            # client.reply_message(event['replyToken'], template)
+            # city = "入力済み"
 
           # 確認用
           # message = weather_area.prefectures(pref)
@@ -134,7 +134,9 @@ post '/callback' do
 
       # メッセージ以外の対応
       else
+        # 判定フラグに代入
         menu_index = ""
+        #----------------------------
         client.reply_message(event['replyToken'], message = {
           type: 'text',
           text: "メッセージのみ対応しています"
