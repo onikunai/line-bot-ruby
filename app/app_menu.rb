@@ -7,6 +7,7 @@ require './app/0form/template'
 
 # 宣言
 menu_index = ''
+city = ''
 form = Form.new
 
 # 微小変更部分！確認用。
