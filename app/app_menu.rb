@@ -52,12 +52,12 @@ post '/callback' do
             # pref = '兵庫県'
           
             # 確認用
-            if city_flag == '入力済み' then
+            # if city_flag == '入力済み' then
               client.reply_message(event['replyToken'], message = {
                 type: 'text',
                 text: pref,
               })
-            end
+            # end
             # -----------------------------------
             city = '入力済み'
             city_flag = '入力済み'
