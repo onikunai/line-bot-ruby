@@ -99,8 +99,8 @@ post '/callback' do
           # 天気:template_prefectures1
           if event.message['text'] == '天気モード'
             # 判定フラグに代入
-            menu_index = "天気"
-            # city = ""
+            menu_index = '天気'
+            city = ''
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
