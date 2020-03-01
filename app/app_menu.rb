@@ -43,6 +43,7 @@ post '/callback' do
 
           if city == '入力済み'
             city = event.message['text']
+            city = ''
           end
           if city == '' || city == '次へ' then
             if city_flag == '' then
