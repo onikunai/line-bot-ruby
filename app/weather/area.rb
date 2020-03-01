@@ -307,18 +307,37 @@
 class Weather_area
   def prefectures(pref_flag, city, form = Form.new, title = "地域を選んで下さい")
     case pref_flag
-    when '北海道'
-      # pref = '北海道'
-      message = {
-        type: 'text',
-        text: '北海道'
-      }
-    when '東京都'
-      # pref = '東京都'
-      message = {
-        type: 'text',
-        text: '東京都'
-      }
+    # if文なら pref_flag.include?("道北")
+    when /道北/
+      text1 = "稚内"
+      text2 = "旭川"
+      text3 = "留萌"
+      template = form.template(title, text1, text2, text3)
+    when /道東/
+      if city == ""
+        text1 = "網走"
+        text2 = "北見"
+        text3 = "紋別"
+        text4 = "次へ"
+      else
+        text1 = "根室"
+        text2 = "釧路"
+        text3 = "帯広"
+        text4 = ""
+      end
+      template = form.template(title, text1, text2, text3, text4)
+    when /道央/
+      text1 = "札幌"
+      text2 = "岩見沢"
+      text3 = "倶知安"
+      template = form.template(title, text1, text2, text3)
+    when /道南/
+      text1 = "室蘭"
+      text2 = "浦河"
+      text3 = "函館"
+      text4 = "江差"
+      template = form.template(title, text1, text2, text3, text4)
+
     # elsif pref.include?("兵庫")
     when /兵庫/
       if city == "次へ"
