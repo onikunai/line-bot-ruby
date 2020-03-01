@@ -1,6 +1,6 @@
 class Form
   #templateは、max4つ
-  def template(title = "", text1 = "", text2 = "", text3 = "", text4 = "")
+  def template(title, text1, text2 = "", text3 = "", text4 = "")
     if text4 != ""
       {
         "type": "template",
