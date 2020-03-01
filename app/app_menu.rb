@@ -37,15 +37,16 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == "天気"
+          menu_index = ""
           # city = ""
           # if city == "入力済み"
           #   city = event.message['text']
           # end
-          if city == "" || city == "次へ"
+          # if city == "" || city == "次へ"
             # if city == ""
             #   pref = event.message['text']
             # end
-            pref = event.message['text']
+          pref = event.message['text']
           
           # 確認用
           client.reply_message(event['replyToken'], message = {
@@ -66,17 +67,17 @@ post '/callback' do
           # -----------------------------------
 
           # 天気を表示
-          else 
-            # 判定フラグに代入
-            # menu_indexの初期化
-            menu_index = ""
-            #----------------------------
-            require './app/weather/app_weather'
-            weather_say = Weather_say.new
-            message = weather_say.message
-            client.reply_message(event['replyToken'], message)
+          # else 
+          #   # 判定フラグに代入
+          #   # menu_indexの初期化
+          #   menu_index = ""
+          #   #----------------------------
+          #   require './app/weather/app_weather'
+          #   weather_say = Weather_say.new
+          #   message = weather_say.message
+          #   client.reply_message(event['replyToken'], message)
 
-          end
+          # end
 
         # オウム返しモード
         elsif menu_index == "オウム返し"
@@ -99,7 +100,7 @@ post '/callback' do
           if event.message['text'] == '天気モード'
             # 判定フラグに代入
             menu_index = "天気"
-            city = ""
+            # city = ""
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
