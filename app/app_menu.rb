@@ -53,6 +53,7 @@ post '/callback' do
           weather_area = Weather_area.new
           template = weather_area.prefectures(pref, city)
           client.reply_message(event['replyToken'], template)
+          city = event.message['text']
 
           # 確認用
           # message = weather_area.prefectures(pref)
