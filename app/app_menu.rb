@@ -46,8 +46,9 @@ post '/callback' do
           if city == '' || city == '次へ'
             if city == '' then
               pref = event.message['text']
+              pref_flag = pref
             end
-            
+            pref = pref_flag
           
             # # 確認用
             # client.reply_message(event['replyToken'], message = {
@@ -61,7 +62,7 @@ post '/callback' do
             template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
-            binding.pry
+            # pry-byebug
 
             # # 確認用
             # message = weather_area.prefectures(pref)
