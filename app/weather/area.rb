@@ -305,10 +305,10 @@
 # end
 
 class Weather_area
-  def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
-    case pref
+  def prefectures(pref_flag, city, form = Form.new, title = "地域を選んで下さい")
+    case pref_flag
     when '北海道'
-      pref = '北海道'
+      # pref = '北海道'
       message = {
         type: 'text',
         text: '北海道'
@@ -326,7 +326,7 @@ class Weather_area
       text2 = "次へ"
       template = form.template(title, text1, text2)
     else
-      pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
+      # pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
       message = {
         type: 'text',
         text: "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"

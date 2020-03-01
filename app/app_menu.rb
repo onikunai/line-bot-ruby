@@ -7,6 +7,8 @@ require './app/0form/template'
 
 # 宣言
 menu_index = ""
+pref = ""
+pref_flag = ""
 city = ""
 city_flag = ""
 form = Form.new
@@ -54,6 +56,7 @@ post '/callback' do
               })
               # pref_flag = event.message['text']
             end
+            pref_flag = pref 
             # pref = '兵庫県'
           
             # 確認用
@@ -68,7 +71,7 @@ post '/callback' do
             city_flag = '入力済み'
             require './app/weather/area'
             weather_area = Weather_area.new
-            template = weather_area.prefectures(pref, city)
+            template = weather_area.prefectures(pref_flag, city)
             client.reply_message(event['replyToken'], template)
 
             # binding.pry
