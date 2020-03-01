@@ -305,8 +305,6 @@
 # end
 
 class Weather_area
-
-
   def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
     if pref == '北海道'
       pref = '北海道'
@@ -320,8 +318,9 @@ class Weather_area
         type: 'text',
         text: '東京都'
       }
-    elsif pref.include?("兵庫")
-      pref = "兵庫県"
+    # elsif pref.include?("兵庫")
+    elsif pref == '兵庫県'
+      # pref = "兵庫県"
       text1 = "神戸"
       text2 = "豊岡"
       template = form.template(title, text1, text2)
