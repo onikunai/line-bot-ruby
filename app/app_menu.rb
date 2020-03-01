@@ -59,13 +59,13 @@ post '/callback' do
               })
             end
             # -----------------------------------
-
+            city = '入力済み'
+            city_flag = '入力済み'
             require './app/weather/area'
             weather_area = Weather_area.new
             template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
-            city = '入力済み'
-            city_flag = '入力済み'
+
             # binding.pry
             # pry-byebug
 
