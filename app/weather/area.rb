@@ -306,20 +306,21 @@
 
 class Weather_area
   def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
-    if pref == '北海道'
+    case pref
+    when '北海道'
       pref = '北海道'
       message = {
         type: 'text',
         text: '北海道'
       }
-    elsif pref == '東京都'
+    when '東京都'
       # pref = '東京都'
       message = {
         type: 'text',
         text: '東京都'
       }
     # elsif pref.include?("兵庫")
-    elsif pref == '兵庫県'
+    when '兵庫県'
       text1 = "神戸"
       text2 = "豊岡"
       text2 = "次へ"
@@ -335,4 +336,34 @@ class Weather_area
 
 end
 
+# class Weather_area
+#   def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
+#     if pref == '北海道'
+#       pref = '北海道'
+#       message = {
+#         type: 'text',
+#         text: '北海道'
+#       }
+#     elsif pref == '東京都'
+#       # pref = '東京都'
+#       message = {
+#         type: 'text',
+#         text: '東京都'
+#       }
+#     # elsif pref.include?("兵庫")
+#     elsif pref == '兵庫県'
+#       text1 = "神戸"
+#       text2 = "豊岡"
+#       text2 = "次へ"
+#       template = form.template(title, text1, text2)
+#     else
+#       pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
+#       message = {
+#         type: 'text',
+#         text: "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
+#       }
+#     end
+#   end
+
+# end
 
