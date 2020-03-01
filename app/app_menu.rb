@@ -6,9 +6,9 @@ require 'line/bot'
 require './app/0form/template'
 
 # 宣言
-menu_index = ''
-city = ''
-city_flag = ''
+menu_index = ""
+city = ""
+city_flag = ""
 form = Form.new
 
 # 微小変更部分！確認用。
@@ -52,12 +52,12 @@ post '/callback' do
             # pref = '兵庫県'
           
             # 確認用
-            # if city_flag == '入力済み' then
+            if city_flag == '入力済み' then
               client.reply_message(event['replyToken'], message = {
                 type: 'text',
                 text: pref,
               })
-            # end
+            end
             # -----------------------------------
             city = '入力済み'
             city_flag = '入力済み'
@@ -127,7 +127,7 @@ post '/callback' do
             })
 
           #メニュー表示
-          else
+          else menu_index == ""
             # 判定フラグに代入
             menu_index = ''
             #----------------------------
