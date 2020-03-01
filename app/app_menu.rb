@@ -38,56 +38,46 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == '天気'
-          menu_index = ''
-          # city = ""
-          # if city == "入力済み"
-          #   city = event.message['text']
-          # end
-          # if city == "" || city == "次へ"
-            # if city == ""
-            #   pref = event.message['text']
-            # end
-          
-          # pref = event.message['text']
-          # if city == ''
-          #   pref = event.message['text']
-          # end
-          if city == '' then
-            pref = event.message['text']
-          else
-            pref = 'city失敗'
+          # menu_index = ''
+
+          if city == '入力済み'
+            city = event.message['text']
           end
+          if city == '' || city == '次へ'
+            if city == '' then
+              pref = event.message['text']
+            end
           
-          # 確認用
-          client.reply_message(event['replyToken'], message = {
-            type: 'text',
-            text: pref,
-          })
-          # -----------------------------------
+            # # 確認用
+            # client.reply_message(event['replyToken'], message = {
+            #   type: 'text',
+            #   text: pref,
+            # })
+            # # -----------------------------------
 
-            # require './app/weather/area'
-            # weather_area = Weather_area.new
-            # template = weather_area.prefectures(pref, city)
-            # client.reply_message(event['replyToken'], template)
-            # city = "入力済み"
+            require './app/weather/area'
+            weather_area = Weather_area.new
+            template = weather_area.prefectures(pref, city)
+            client.reply_message(event['replyToken'], template)
+            city = '入力済み'
 
-          # 確認用
-          # message = weather_area.prefectures(pref)
-          # client.reply_message(event['replyToken'], message)
-          # -----------------------------------
+            # # 確認用
+            # message = weather_area.prefectures(pref)
+            # client.reply_message(event['replyToken'], message)
+            # # -----------------------------------
 
           # 天気を表示
-          # else 
-          #   # 判定フラグに代入
-          #   # menu_indexの初期化
-          #   menu_index = ""
-          #   #----------------------------
-          #   require './app/weather/app_weather'
-          #   weather_say = Weather_say.new
-          #   message = weather_say.message
-          #   client.reply_message(event['replyToken'], message)
+          else 
+            # 判定フラグに代入
+            # menu_indexの初期化
+            menu_index = ""
+            #----------------------------
+            require './app/weather/app_weather'
+            weather_say = Weather_say.new
+            message = weather_say.message
+            client.reply_message(event['replyToken'], message)
 
-          # end
+          end
 
         # オウム返しモード
         elsif menu_index == "オウム返し"
