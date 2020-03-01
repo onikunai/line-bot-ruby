@@ -48,7 +48,7 @@ post '/callback' do
               pref = event.message['text']
               pref_flag = pref
             end
-            pref = '兵庫県'
+            # pref = '兵庫県'
           
             # # 確認用
             # client.reply_message(event['replyToken'], message = {
