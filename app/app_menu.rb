@@ -68,9 +68,6 @@ post '/callback' do
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
 
-            # binding.pry
-            # pry-byebug
-
             # # 確認用
             # message = weather_area.prefectures(pref)
             # client.reply_message(event['replyToken'], message)

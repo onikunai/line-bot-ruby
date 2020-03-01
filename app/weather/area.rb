@@ -321,9 +321,14 @@ class Weather_area
       }
     # elsif pref.include?("兵庫")
     when '兵庫県'
-      text1 = "神戸"
-      text2 = "豊岡"
-      text2 = "次へ"
+      if city == "次へ"
+        text1 = "豊岡"
+        text2 = ""
+      else
+        text1 = "神戸"
+        text2 = "豊岡"
+        text2 = "次へ"
+      end
       template = form.template(title, text1, text2)
     else
       # pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
