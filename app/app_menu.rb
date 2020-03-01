@@ -42,9 +42,10 @@ post '/callback' do
           #   city = event.message['text']
           # end
           if city == "" || city == "次へ"
-            if city == ""
-              pref = event.message['text']
-            end
+            # if city == ""
+            #   pref = event.message['text']
+            # end
+            pref = event.message['text']
           
           # 確認用
           # client.reply_message(event['replyToken'], message = {
@@ -102,7 +103,7 @@ post '/callback' do
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
-              text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県など"
+              text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県などmmdfb"
             })
 
           # オウム返しモード開始
