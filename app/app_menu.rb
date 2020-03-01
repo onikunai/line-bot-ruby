@@ -63,6 +63,7 @@ post '/callback' do
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
             pref = pref_flag
+            binding.pry
             # pry-byebug
 
             # # 確認用
