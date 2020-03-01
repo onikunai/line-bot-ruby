@@ -320,7 +320,8 @@ class Weather_area
         type: 'text',
         text: '東京都'
       }
-    elsif pref.include?("兵庫")
+    elsif pref == "兵庫"
+    # elsif pref.include?("兵庫")
       text1 = "神戸"
       text2 = "豊岡"
       template = form.template(title, text1, text2)
