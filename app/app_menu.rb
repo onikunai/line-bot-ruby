@@ -37,11 +37,12 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == "天気"
-          if city == "入力済み"
-            city = event.message['text']
-          end
-          if city = "" || city = "次へ"
-            if city = ""
+          # city = ""
+          # if city == "入力済み"
+          #   city = event.message['text']
+          # end
+          if city == "" || city == "次へ"
+            if city == ""
               pref = event.message['text']
             end
           
@@ -52,11 +53,11 @@ post '/callback' do
           # })
           # -----------------------------------
 
-          require './app/weather/area'
-          weather_area = Weather_area.new
-          template = weather_area.prefectures(pref, city)
-          client.reply_message(event['replyToken'], template)
-          city = "入力済み"
+            require './app/weather/area'
+            weather_area = Weather_area.new
+            template = weather_area.prefectures(pref, city)
+            client.reply_message(event['replyToken'], template)
+            city = "入力済み"
 
           # 確認用
           # message = weather_area.prefectures(pref)
@@ -65,12 +66,15 @@ post '/callback' do
 
           # 天気を表示
           else 
+            # 判定フラグに代入
+            # menu_indexの初期化
+            menu_index = ""
+            #----------------------------
             require './app/weather/app_weather'
             weather_say = Weather_say.new
             message = weather_say.message
             client.reply_message(event['replyToken'], message)
-            # menu_indexの初期化
-            menu_index = ""
+
           end
 
         # オウム返しモード
@@ -92,8 +96,10 @@ post '/callback' do
         else
           # 天気:template_prefectures1
           if event.message['text'] == '天気モード'
+            # 判定フラグに代入
             menu_index = "天気"
             city = ""
+            #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
               text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県など"
@@ -101,7 +107,9 @@ post '/callback' do
 
           # オウム返しモード開始
           elsif event.message['text'] == 'オウム返しモード'
+            # 判定フラグに代入
             menu_index = "オウム返し"
+            #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
               text: "オウム返しモードを開始します。\n終了するには、「また明日」と送信して下さい"
@@ -109,7 +117,9 @@ post '/callback' do
 
           #メニュー表示
           else
+            # 判定フラグに代入
             menu_index = ""
+            #----------------------------
             title = "メニューを選んで下さい"
             text1 = "天気モード"
             text2 = "オウム返しモード"
