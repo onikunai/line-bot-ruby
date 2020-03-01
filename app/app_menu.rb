@@ -6,7 +6,7 @@ require 'line/bot'
 require './app/0form/template'
 
 # 宣言
-menu_index = ""
+menu_index = ''
 form = Form.new
 
 # 微小変更部分！確認用。
@@ -36,8 +36,8 @@ post '/callback' do
       case event.type
       when Line::Bot::Event::MessageType::Text
         # 天気モード
-        if menu_index == "天気"
-          menu_index = ""
+        if menu_index == '天気'
+          menu_index = ''
           # city = ""
           # if city == "入力済み"
           #   city = event.message['text']
@@ -46,7 +46,10 @@ post '/callback' do
             # if city == ""
             #   pref = event.message['text']
             # end
-          pref = event.message['text']
+          pref = 'city失敗'
+          if city == ''
+            pref = event.message['text']
+          end
           
           # 確認用
           client.reply_message(event['replyToken'], message = {
@@ -110,7 +113,7 @@ post '/callback' do
           # オウム返しモード開始
           elsif event.message['text'] == 'オウム返しモード'
             # 判定フラグに代入
-            menu_index = "オウム返し"
+            menu_index = 'オウム返し'
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
@@ -120,7 +123,7 @@ post '/callback' do
           #メニュー表示
           else
             # 判定フラグに代入
-            menu_index = ""
+            menu_index = ''
             #----------------------------
             title = "メニューを選んで下さい"
             text1 = "天気モード"
@@ -136,7 +139,7 @@ post '/callback' do
       # メッセージ以外の対応
       else
         # 判定フラグに代入
-        menu_index = ""
+        menu_index = ''
         #----------------------------
         client.reply_message(event['replyToken'], message = {
           type: 'text',
