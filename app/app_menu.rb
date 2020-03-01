@@ -51,12 +51,14 @@ post '/callback' do
             end
             # pref = '兵庫県'
           
-            # # 確認用
-            # client.reply_message(event['replyToken'], message = {
-            #   type: 'text',
-            #   text: pref,
-            # })
-            # # -----------------------------------
+            # 確認用
+            if city_flag != '' then
+              client.reply_message(event['replyToken'], message = {
+                type: 'text',
+                text: pref,
+              })
+            end
+            # -----------------------------------
 
             require './app/weather/area'
             weather_area = Weather_area.new
