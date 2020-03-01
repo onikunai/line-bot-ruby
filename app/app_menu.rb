@@ -37,6 +37,9 @@ post '/callback' do
       when Line::Bot::Event::MessageType::Text
         # 天気モード
         if menu_index == "天気"
+          if city == "入力済み"
+            city = event.message['text']
+          end
           if city = "" || city = "次へ"
             if city = ""
               pref = event.message['text']
@@ -53,13 +56,15 @@ post '/callback' do
           weather_area = Weather_area.new
           template = weather_area.prefectures(pref, city)
           client.reply_message(event['replyToken'], template)
-          city = event.message['text']
+          city = "入力済み"
 
           # 確認用
           # message = weather_area.prefectures(pref)
           # client.reply_message(event['replyToken'], message)
           # -----------------------------------
-          else # 天気を表示
+
+          # 天気を表示
+          else 
             require './app/weather/app_weather'
             weather_say = Weather_say.new
             message = weather_say.message
