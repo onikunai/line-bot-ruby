@@ -45,19 +45,12 @@ post '/callback' do
 
           if city == '入力済み'
             city = event.message['text']
-            # city = ''
           end
           if city == '' || city == '次へ' then
             if city == '' then
               pref = event.message['text']
-              # client.reply_message(event['replyToken'], message = {
-              #   type: 'text',
-              #   text: pref,
-              # })
-              # pref_flag = event.message['text']
             end
             pref_flag = pref 
-            # pref = '兵庫県'
           
             # 確認用
             # if city_flag == '入力済み' then
@@ -67,12 +60,13 @@ post '/callback' do
             #   })
             # end
             # -----------------------------------
-            city = '入力済み'
-            # city_flag = '入力済み'
+
+            
             require './app/weather/area'
             weather_area = Weather_area.new
             template = weather_area.prefectures(pref_flag, city)
             client.reply_message(event['replyToken'], template)
+            city = '入力済み'
 
             # binding.pry
             # pry-byebug
