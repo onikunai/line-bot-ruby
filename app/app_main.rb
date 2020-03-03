@@ -67,7 +67,7 @@ post '/callback' do
             template = weather_area.prefectures(pref_flag, city)
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
-            pref_flag = template.pref_flag
+            # pref_flag = template.pref_flag
 
             # # 確認用
             # message = weather_area.prefectures(pref)
