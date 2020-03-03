@@ -558,7 +558,6 @@ class Weather_area
         type: 'text',
         text: "北海道は、道北、道東、道央、道南のどれかをメッセージで送信して下さい"
       }
-    end
     else
       message = {
         type: 'text',
