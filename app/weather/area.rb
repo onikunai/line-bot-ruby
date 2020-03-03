@@ -616,9 +616,9 @@ class Weather_area
       case pref
       when "東京"
         pref = pref + "都"
-      when "大阪" || "京都"
+      when "大阪", "京都"
         pref = pref + "府"
-      when "道北" || "道東" || "道央" || "道南"
+      when "道北", "道東", "道央", "道南"
         pref = "北海道"
       else
         pref = pref + "県"
