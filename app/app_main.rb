@@ -82,7 +82,7 @@ post '/callback' do
             #----------------------------
             require './app/weather/app_weather'
             weather_say = Weather_say.new
-            message = weather_say.message
+            message = weather_say.message(city)
             client.reply_message(event['replyToken'], message)
 
           end
