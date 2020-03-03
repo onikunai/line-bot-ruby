@@ -553,10 +553,16 @@ class Weather_area
         text4 = "与那国島"
       end
       template = form.template(title, text1, text2, text3, text4)
+    when "北海道"
+      message = {
+        type: 'text',
+        text: "北海道は、例に従ってください。\n例：道北、道東、道央、道南"
+      }
+    end
     else
       message = {
         type: 'text',
-        text: "都道府県を送信して下さい。\n記入例：道央、東京、大阪など_are.rb内"
+        text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"
       }
     end
   end
@@ -592,7 +598,6 @@ class Weather_area
     # 兵庫県
     when "神戸"
       keyWord = "280010"
-      city = "#{city}氏"
     when "豊岡"
       keyWord = "280020"
 
