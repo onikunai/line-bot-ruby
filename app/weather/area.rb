@@ -591,15 +591,13 @@ class Weather_area
 
     # 兵庫県
     when "神戸"
-      city = "#{city} + 氏"
       keyWord = "280010"
-
+      city = "#{city}氏"
     when "豊岡"
       keyWord = "280020"
 
     end
-    # return keyWord, city
-
+    return keyWord
   end
 
 end
