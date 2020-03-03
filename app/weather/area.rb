@@ -628,18 +628,19 @@ class Weather_area
     # 市町村の変換
     case city
     # 北海道
-    when "倶知安" || "浦河" || "江差"
+    when "倶知安", "浦河", "江差"
       city = city + "町"
     # 東京
-    when "東京" ||  "大島" || "八丈島" || "父島"
+    when "東京", "大島", "八丈島", "父島"
     # 沖縄
-    when "久米島" || "南大東" || "宮古島" || "石垣島" || "与那国島"
+    when "久米島", "南大東", "宮古島", "石垣島", "与那国島"
     # 鹿児島
     when "種子島"
     else
       city = city + "市"
     end
 
+    # return
     if city == "東京"
       return pref
     else
