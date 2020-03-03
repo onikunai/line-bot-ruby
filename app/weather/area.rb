@@ -562,23 +562,39 @@ class Weather_area
   end
 
   # 拠点コード
-  # def city_code(city)
-  #   case city
-  #   # 道北
-  #   when "稚内"
-  #     keyWord = "011000"
-  #   when "旭川"
-  #     keyWord = "012010"
-  #   when "留萌"
-  #     keyWord = "012020"
-  #   # 道東
-  #   when "網走"
-  #     keyWord = "013010"
-  #   when "旭川"
-  #     keyWord = "012010"
-  #   when "留萌"
-  #     keyWord = "012020"
+  def city_code(city)
+    case city
+    # 道北
+    when "稚内"
+      keyWord = "011000"
+    when "旭川"
+      keyWord = "012010"
+    when "留萌"
+      keyWord = "012020"
+    # 道東
+    when "網走"
+      keyWord = "013010"
+    when "旭川"
+      keyWord = "012010"
+    when "留萌"
+      keyWord = "012020"
 
-  # end
+    # 東京都
+    when "東京"
+      keyWord = "130010"
+    when "大島"
+      keyWord = "130020"
+    when "八丈島"
+      keyWord = "130030"
+    when "父島"
+      keyWord = "130040"
+
+    # 兵庫県
+    when "神戸"
+      keyWord = "280010"
+    when "豊岡"
+      keyWord = "280020"
+
+  end
 
 end

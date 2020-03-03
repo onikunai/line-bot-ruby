@@ -26,11 +26,11 @@ class Weather
   # メイン処理メソッド
   def doProcess()
     # 拠点コード
-    # require './app/weather/area'
-    # weather_area = Weather_area.new
-    # keyWord = weather_area.city_code(city)
+    require './app/weather/area'
+    weather_area = Weather_area.new
+    keyWord = weather_area.city_code(city)
     # keyWord = YAML.load_file('./config/config.yml')["location-code"]
-    keyWord = "130010"
+    # keyWord = "130010"
     # 天気API URL取得
     # url = YAML.load_file('./config/config.yml')["weather-url"]
     url = "http://weather.livedoor.com/forecast/webservice/json/v1"
