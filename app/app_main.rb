@@ -46,8 +46,8 @@ post '/callback' do
           if city == '入力済み'
             city = event.message['text']
           end
-          if city == '' || city == '次へ' then
-            if city == '' then
+          if city == '' || city == '次へ'
+            if city == ''
               pref_flag = event.message['text']
             end
             # pref_flag = pref 
