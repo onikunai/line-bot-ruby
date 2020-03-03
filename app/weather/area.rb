@@ -611,14 +611,18 @@ class Weather_area
   def area_info(pref, city)
     # 都道府県の変換
     case pref
-    when "東京"
-      pref = pref + "都"
-    when "大阪" || "京都"
-      pref = pref + "府"
-    when "道北" || "道東" || "道央" || "道南"
-      pref = "北海道"
+    when "都" || "府" || "県"
     else
-      pref = pref + "県"
+      case pref
+      when "東京"
+        pref = pref + "都"
+      when "大阪" || "京都"
+        pref = pref + "府"
+      when "道北" || "道東" || "道央" || "道南"
+        pref = "北海道"
+      else
+        pref = pref + "県"
+      end
     end
 
     # 市町村の変換
@@ -627,7 +631,7 @@ class Weather_area
     when "倶知安" || "浦河" || "江差"
       city = city + "町"
     # 東京
-    when "大島" || "八丈島" || "父島"
+    when "東京" ||  "大島" || "八丈島" || "父島"
     # 沖縄
     when "久米島" || "南大東" || "宮古島" || "石垣島" || "与那国島"
     # 鹿児島
