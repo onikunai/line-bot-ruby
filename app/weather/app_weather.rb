@@ -26,7 +26,6 @@ class Weather
   # メイン処理メソッド
   def doProcess(city)
     # 拠点コード
-    # require './app/weather/area'
     weather_area = Weather_area.new
     keyWord = weather_area.city_code(city)
     # keyWord = YAML.load_file('./config/config.yml')["location-code"]

@@ -597,7 +597,7 @@ class Weather_area
       keyWord = "280020"
 
     end
-    return keyWord
+    # return keyWord
   end
 
 end
