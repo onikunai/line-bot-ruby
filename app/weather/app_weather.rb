@@ -3,7 +3,7 @@ require 'resolv'
 require 'json'
 require 'yaml'
 require './app/weather/info'
-require './app/weather/area'
+# require './app/weather/area'
 
 class Weather
 
@@ -24,7 +24,7 @@ class Weather
   end
 
   # メイン処理メソッド
-  def doProcess()
+  def doProcess(city)
     # 拠点コード
     require './app/weather/area'
     weather_area = Weather_area.new
@@ -79,9 +79,9 @@ class Weather
 end
 
 class Weather_say
-  def message
+  def message(city)
     weatherobj = Weather.new
-    info = weatherobj.doProcess()
+    info = weatherobj.doProcess(city)
     message = {
       type: 'text',
       text: "今日、#{info.today()} 東京の天気です。\n 天気    ：#{info.todayTelop()}\n 最高気温：#{info.todayTempMax()}\n 最低気温：#{info.todayTempMin()}\n\n明日、#{info.tmrw()} 東京の天気です。\n 天気    ：#{info.tmrwTelop()}\n 最高気温：#{info.tmrwTempMax()}\n 最低気温：#{info.tmrwTempMin()}\n【概要】\n #{info.description()}"
