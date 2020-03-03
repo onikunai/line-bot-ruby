@@ -8,9 +8,8 @@ require './app/0form/template'
 # 宣言
 menu_index = ""
 pref = ""
-# pref_flag = ""
 city = ""
-# city_flag = ""
+area_info = ""
 form = Form.new
 
 # 微小変更部分！確認用。
@@ -82,7 +81,7 @@ post '/callback' do
             #----------------------------
             require './app/weather/app_weather'
             weather_say = Weather_say.new
-            message = weather_say.message(city)
+            message = weather_say.message(pref, city)
             client.reply_message(event['replyToken'], message)
 
           end

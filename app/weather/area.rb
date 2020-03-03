@@ -1,309 +1,3 @@
-# 参照ファイル
-# require './app/0form/template'
-
-
-
-# class Weather_area
-#   def prefectures(pref)
-#     title = '地域を選んで下さい'
-
-#     if pref == '北海道'
-#       pref = '北海道'
-#       message = {
-#         type: 'text',
-#         text: '北海道'
-#       }
-#     elsif pref == '東京都'
-#       # pref = '東京都'
-#       message = {
-#         type: 'text',
-#         text: '東京都'
-#       }
-#     elsif pref == "兵庫県"
-#       text1 = "神戸"
-#       # text2 = "豊岡"
-#       # text3 = ""
-#       # text4 = ""
-#       # form = Form.new
-#       # template = form.template(title, text1, text2, text3, text4)
-#     else
-#       pref = "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
-#       message = {
-#         type: 'text',
-#         text: "都道府県を送信して下さい。\n記入例：北海道、東京都、兵庫県など"
-#       }
-#     end
-#   end
-
-#   # 拠点コード
-#   def city_code(city)
-#     city = "神戸"
-#     case city
-#     # 道北
-#     when "稚内"
-#       keyWord = "011000"
-#     when "旭川"
-#       keyWord = "012010"
-#     when "留萌"
-#       keyWord = "012020"
-    
-#     # 道東
-#     when "網走"
-#       keyWord = "013010"
-#     when "旭川"
-#       keyWord = "012010"
-#     when "留萌"
-#       keyWord = "012020"
-#     when "北見"
-#       keyWord = "013020"
-#     when "紋別"
-#       keyWord = "013030"
-#     when "根室"
-#       keyWord = "014010"
-#     when "釧路"
-#       keyWord = "014020"
-#     when "帯広"
-#       keyWord = "014030"
-  
-#     # 兵庫県
-#     when "神戸"
-#       keyWord = "280010"
-#     when "豊岡"
-#       keyWord = "280020"
-      
-# # 道央	
-# # 札幌	016010
-# # 岩見沢	016020
-# # 倶知安	016030
-	
-# # 道南	
-# # 室蘭	015010
-# # 浦河	015020
-# # 函館	017010
-# # 江差	017020
-	
-# # 青森県	
-# # 青森	020010
-# # むつ	020020
-# # 八戸	020030
-	
-# # 岩手県	
-# # 盛岡	030010
-# # 宮古	030020
-# # 大船渡	030030
-	
-# # 宮城県	
-# # 仙台	040010
-# # 白石	040020
-	
-# # 秋田県	
-# # 秋田	050010
-# # 横手	050020
-	
-# # 山形県	
-# # 山形	060010
-# # 米沢	060020
-# # 酒田	060030
-# # 新庄	060040
-	
-# # 福島県	
-# # 福島	070010
-# # 小名浜	070020
-# # 若松	070030
-	
-# # 茨城県	
-# # 水戸	080010
-# # 土浦	080020
-	
-# # 栃木県	
-# # 宇都宮	090010
-# # 大田原	090020
-	
-# # 群馬県	
-# # 前橋	100010
-# # みなかみ	100020
-	
-# # 埼玉県	
-# # さいたま	110010
-# # 熊谷	110020
-# # 秩父	110030
-	
-# # 千葉県	
-# # 千葉	120010
-# # 銚子	120020
-# # 館山	120030
-	
-# # 東京都	
-# # 東京	130010
-# # 大島	130020
-# # 八丈島	130030
-# # 父島	130040
-	
-# # 神奈川県	
-# # 横浜	140010
-# # 小田原	140020
-	
-# # 新潟県	
-# # 新潟	150010
-# # 長岡	150020
-# # 高田	150030
-# # 相川	150040
-	
-# # 富山県	
-# # 富山	160010
-# # 伏木	160020
-	
-# # 石川県	
-# # 金沢	170010
-# # 輪島	170020
-	
-# # 福井県	
-# # 福井	180010
-# # 敦賀	180020
-	
-# # 山梨県	
-# # 甲府	190010
-# # 河口湖	190020
-	
-# # 長野県	
-# # 長野	200010
-# # 松本	200020
-# # 飯田	200030
-	
-# # 岐阜県	
-# # 岐阜	210010
-# # 高山	210020
-	
-# # 静岡県	
-# # 静岡	220010
-# # 網代	220020
-# # 三島	220030
-# # 浜松	220040
-	
-# # 愛知県	
-# # 名古屋	230010
-# # 豊橋	230020
-	
-# # 三重県	
-# # 津	240010
-# # 尾鷲	240020
-	
-# # 滋賀県	
-# # 大津	250010
-# # 彦根	250020
-	
-# # 京都府	
-# # 京都	260010
-# # 舞鶴	260020
-	
-# # 大阪府	
-# # 大阪	270000
-	
-# # 兵庫県	
-# # 神戸	280010
-# # 豊岡	280020
-	
-# # 奈良県	
-# # 奈良	290010
-# # 風屋	290020
-	
-# # 和歌山県	
-# # 和歌山	300010
-# # 潮岬	300020
-	
-# # 鳥取県	
-# # 鳥取	310010
-# # 米子	310020
-	
-# # 島根県	
-# # 松江	320010
-# # 浜田	320020
-# # 西郷	320030
-	
-# # 岡山県	
-# # 岡山	330010
-# # 津山	330020
-	
-# # 広島県	
-# # 広島	340010
-# # 庄原	340020
-	
-# # 山口県	
-# # 下関	350010
-# # 山口	350020
-# # 柳井	350030
-# # 萩	350040
-	
-# # 徳島県	
-# # 徳島	360010
-# # 日和佐	360020
-	
-# # 香川県	
-# # 高松	370000
-	
-# # 愛媛県	
-# # 松山	380010
-# # 新居浜	380020
-# # 宇和島	380030
-	
-# # 高知県	
-# # 高知	390010
-# # 室戸岬	390020
-# # 清水	390030
-	
-# # 福岡県	
-# # 福岡	400010
-# # 八幡	400020
-# # 飯塚	400030
-# # 久留米	400040
-	
-# # 佐賀県	
-# # 佐賀	410010
-# # 伊万里	410020
-	
-# # 長崎県	
-# # 長崎	420010
-# # 佐世保	420020
-# # 厳原	420030
-# # 福江	420040
-	
-# # 熊本県	
-# # 熊本	430010
-# # 阿蘇乙姫	430020
-# # 牛深	430030
-# # 人吉	430040
-	
-# # 大分県	
-# # 大分	440010
-# # 中津	440020
-# # 日田	440030
-# # 佐伯	440040
-	
-# # 宮崎県	
-# # 宮崎	450010
-# # 延岡	450020
-# # 都城	450030
-# # 高千穂	450040
-	
-# # 鹿児島県	
-# # 鹿児島	460010
-# # 鹿屋	460020
-# # 種子島	460030
-# # 名瀬	460040
-	
-# # 沖縄県	
-# # 那覇	471010
-# # 名護	471020
-# # 久米島	471030
-# # 南大東	472000
-# # 宮古島	473000
-# # 石垣島	474010
-# # 与那国島	474020
-
-#   end
-
-# end
-
 class Weather_area
   def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
     case pref
@@ -534,6 +228,12 @@ class Weather_area
       text3 = "日田"
       text4 = "佐伯"
       template = form.template(title, text1, text2, text3, text4)
+    when /宮崎/
+      text1 = "宮崎"
+      text2 = "延岡"
+      text3 = "都城"
+      text4 = "高千穂"
+      template = form.template(title, text1, text2, text3, text4)
     when /鹿児島/
       text1 = "鹿児島"
       text2 = "鹿屋"
@@ -580,12 +280,102 @@ class Weather_area
     # 道東
     when "網走"
       keyWord = "013010"
-    when "旭川"
-      keyWord = "012010"
-    when "留萌"
-      keyWord = "012020"
-
-    # 東京都
+    when "北見"
+      keyWord = "013020"
+    when "紋別"
+      keyWord = "013030"
+    when "根室"
+      keyWord = "014010"
+    when "釧路"
+      keyWord = "014020"
+    when "帯広"
+      keyWord = "014030"
+    # 道央
+    when "札幌"
+      keyWord = "016010"
+    when "岩見沢"
+      keyWord = "016020"
+    when "倶知安"
+      keyWord = "016030"
+    # 道南
+    when "室蘭"
+      keyWord = "015010"
+    when "浦河"
+      keyWord = "015020"
+    when "函館"
+      keyWord = "017010"
+    when "江差"
+      keyWord = "017020"
+    # 青森
+    when "青森"
+      keyWord = "020010"
+    when "むつ"
+      keyWord = "020020"
+    when "八戸"
+      keyWord = "020030"
+    # 岩手
+    when "盛岡"
+      keyWord = "030010"
+    when "宮古"
+      keyWord = "030020"
+    when "大船渡"
+      keyWord = "030030"
+    # 宮城
+    when "仙台"
+      keyWord = "040010"
+    when "白石"
+      keyWord = "040020"
+    # 秋田
+    when "秋田"
+      keyWord = "050010"
+    when "横手"
+      keyWord = "050020"
+    # 山形
+    when "山形"
+      keyWord = "060010"
+    when "米沢"
+      keyWord = "060020"
+    when "酒田"
+      keyWord = "060030"
+    when "新庄"
+      keyWord = "060040"
+    # 福島
+    when "福島"
+      keyWord = "070010"
+    when "小名浜"
+      keyWord = "070020"
+    when "若松"
+      keyWord = "070030"
+    # 茨城
+    when "水戸"
+      keyWord = "080010"
+    when "土浦"
+      keyWord = "080020"
+    # 栃木
+    when "宇都宮"
+      keyWord = "090010"
+    when "大田原"
+      keyWord = "090020"
+    # 群馬
+    when "前橋"
+      keyWord = "100010"
+    when "みなかみ"
+      keyWord = "100020"
+    # 埼玉
+    when "さいたま"
+      keyWord = "110010"
+    when "熊谷"
+      keyWord = "110020"
+    when "秩父"
+      keyWord = "110030"
+    # 千葉
+    when "千葉"
+      keyWord = "120010"
+    when "銚子"
+      keyWord = "120020"
+    when "館山"
+      keyWord = "120030"
+    # 東京
     when "東京"
       keyWord = "130010"
     when "大島"
@@ -594,15 +384,268 @@ class Weather_area
       keyWord = "130030"
     when "父島"
       keyWord = "130040"
-
-    # 兵庫県
+    # 神奈川
+    when "横浜"
+      keyWord = "140010"
+    when "小田原"
+      keyWord = "140020"
+    # 新潟
+    when "新潟"
+      keyWord = "150010"
+    when "長岡"
+      keyWord = "150020"
+    when "高田"
+      keyWord = "150030"
+    when "相川"
+      keyWord = "150040"
+    # 富山
+    when "富山"
+      keyWord = "160010"
+    when "伏木"
+      keyWord = "160020"
+    # 石川
+    when "金沢"
+      keyWord = "170010"
+    when "輪島"
+      keyWord = "170020"
+    # 福井
+    when "福井"
+      keyWord = "180010"
+    when "敦賀"
+      keyWord = "180020"
+    # 山梨
+    when "甲府"
+      keyWord = "190010"
+    when "河口湖"
+      keyWord = "190020"
+    # 長野
+    when "長野"
+      keyWord = "200010"
+    when "松本"
+      keyWord = "200020"
+    when "飯田"
+      keyWord = "200030"
+    # 岐阜
+    when "岐阜"
+      keyWord = "210010"
+    when "高山"
+      keyWord = "210020"
+    # 静岡
+    when "静岡"
+      keyWord = "220010"
+    when "網代"
+      keyWord = "220020"
+    when "三島"
+      keyWord = "220030"
+    when "浜松"
+      keyWord = "220040"
+    # 愛知
+    when "名古屋"
+      keyWord = "230010"
+    when "豊橋"
+      keyWord = "230020"
+    # 三重
+    when "津"
+      keyWord = "240010"
+    when "尾鷲"
+      keyWord = "240020"
+    # 滋賀
+    when "大津"
+      keyWord = "250010"
+    when "彦根"
+      keyWord = "250020"
+    # 京都
+    when "京都"
+      keyWord = "260010"
+    when "舞鶴"
+      keyWord = "260020"
+    # 大阪
+    when "大阪"
+      keyWord = "270000"
+    # 兵庫
     when "神戸"
       keyWord = "280010"
     when "豊岡"
       keyWord = "280020"
-
+    # 奈良
+    when "奈良"
+      keyWord = "290010"
+    when "風屋"
+      keyWord = "290020"
+    # 和歌山
+    when "和歌山"
+      keyWord = "300010"
+    when "潮岬"
+      keyWord = "300020"
+    # 鳥取
+    when "鳥取"
+      keyWord = "310010"
+    when "米子"
+      keyWord = "310020"
+    # 島根
+    when "松江"
+      keyWord = "320010"
+    when "浜田"
+      keyWord = "320020"
+    when "西郷"
+      keyWord = "320030"
+    # 岡山
+    when "岡山"
+      keyWord = "330010"
+    when "津山"
+      keyWord = "330020"
+    # 広島
+    when "広島"
+      keyWord = "340010"
+    when "庄原"
+      keyWord = "340020"
+    # 山口
+    when "下関"
+      keyWord = "350010"
+    when "山口"
+      keyWord = "350020"
+    when "柳井"
+      keyWord = "350030"
+    when "萩"
+      keyWord = "350040"
+    # 徳島
+    when "徳島"
+      keyWord = "360010"
+    when "日和佐"
+      keyWord = "360020"
+    # 香川
+    when "高松"
+      keyWord = "370000"
+    # 愛媛
+    when "松山"
+      keyWord = "380010"
+    when "新居浜"
+      keyWord = "380020"
+    when "宇和島"
+      keyWord = "380030"
+    # 高知
+    when "高知"
+      keyWord = "390010"
+    when "室戸岬"
+      keyWord = "390020"
+    when "清水"
+      keyWord = "390030"
+    # 福岡
+    when "福岡"
+      keyWord = "400010"
+    when "八幡"
+      keyWord = "400020"
+    when "飯塚"
+      keyWord = "400030"
+    when "久留米"
+      keyWord = "400040"
+    # 佐賀
+    when "佐賀"
+      keyWord = "410010"
+    when "伊万里"
+      keyWord = "410020"
+    # 長崎
+    when "長崎"
+      keyWord = "420010"
+    when "佐世保"
+      keyWord = "420020"
+    when "厳原"
+      keyWord = "420030"
+    when "福江"
+      keyWord = "420040"
+    # 熊本
+    when "熊本"
+      keyWord = "430010"
+    when "阿蘇乙姫"
+      keyWord = "430020"
+    when "牛深"
+      keyWord = "430030"
+    when "人吉"
+      keyWord = "430040"
+    # 大分
+    when "大分"
+      keyWord = "440010"
+    when "中津"
+      keyWord = "440020"
+    when "日田"
+      keyWord = "440030"
+    when "佐伯"
+      keyWord = "440040"
+    # 宮崎
+    when "宮崎"
+      keyWord = "450010"
+    when "延岡"
+      keyWord = "450020"
+    when "都城"
+      keyWord = "450030"
+    when "高千穂"
+      keyWord = "450040"
+    # 鹿児島
+    when "鹿児島"
+      keyWord = "460010"
+    when "鹿屋"
+      keyWord = "460020"
+    when "種子島"
+      keyWord = "460030"
+    when "名瀬"
+      keyWord = "460040"
+    # 沖縄
+    when "那覇"
+      keyWord = "471010"
+    when "名護"
+      keyWord = "471020"
+    when "久米島"
+      keyWord = "471030"
+    when "南大東"
+      keyWord = "472000"
+    when "宮古島"
+      keyWord = "473000"
+    when "石垣島"
+      keyWord = "474010"
+    when "与那国島"
+      keyWord = "474020"
     end
-    # return keyWord
+  end
+
+  # 変換
+  def area_info(pref, city)
+    # 都道府県の変換
+    case pref
+    when "東京都", "大阪府", "京都府", /県/
+    else
+      case pref
+      when "東京"
+        pref = pref + "都"
+      when "大阪", "京都"
+        pref = pref + "府"
+      when "道北", "道東", "道央", "道南"
+        pref = "北海道"
+      else
+        pref = pref + "県"
+      end
+    end
+
+    # 市町村の変換
+    case city
+    # 北海道
+    when "倶知安", "浦河", "江差"
+      city = city + "町"
+    # 東京
+    when "東京", "大島", "八丈島", "父島"
+    # 沖縄
+    when "久米島", "南大東", "宮古島", "石垣島", "与那国島"
+    # 鹿児島
+    when "種子島"
+    else
+      city = city + "市"
+    end
+
+    # return
+    if city == "東京"
+      return pref
+    else
+      return pref + city
+    end
   end
 
 end
