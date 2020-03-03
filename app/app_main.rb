@@ -46,9 +46,11 @@ post '/callback' do
           if city == '入力済み'
             city = event.message['text']
           end
-          if city == '' || city == '次へ' then
+          if city == '' || city == '次へ' || city == '道北' || city == '道東' || city == '道央' || city == '道南'
             if city == '' then
               pref_flag = event.message['text']
+            else city == '道北' || city == '道東' || city == '道央' || city == '道南'
+              pref_flag = city
             end
             # pref_flag = pref 
           
@@ -64,10 +66,11 @@ post '/callback' do
             
             require './app/weather/area'
             weather_area = Weather_area.new
-            template = weather_area.prefectures(pref_flag, city)
+            area_template = weather_area.prefectures(pref_flag, city)
+            template = area_template.template
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
-            pref_flag = template.pref_flag
+            pref_flag = area_template.pref_flag
 
             # # 確認用
             # message = weather_area.prefectures(pref)
