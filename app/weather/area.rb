@@ -592,11 +592,12 @@ class Weather_area
     # 兵庫県
     when "神戸"
       keyWord = "280010"
+      city = "#{city} + 氏"
     when "豊岡"
       keyWord = "280020"
 
     end
-    
+
   end
 
 end
