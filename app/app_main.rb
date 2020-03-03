@@ -46,11 +46,9 @@ post '/callback' do
           if city == '入力済み'
             city = event.message['text']
           end
-          if city == '' || city == '次へ' || city == '道北' || city == '道東' || city == '道央' || city == '道南'
+          if city == '' || city == '次へ' then
             if city == '' then
               pref_flag = event.message['text']
-            else city == '道北' || city == '道東' || city == '道央' || city == '道南'
-              pref_flag = city
             end
             # pref_flag = pref 
           
@@ -115,7 +113,7 @@ post '/callback' do
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
-              text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"
+              text: "都道府県を送信して下さい。\n記入例：道央、東京、大阪など_main.rb内"
             })
 
           # オウム返しモード開始
