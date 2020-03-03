@@ -611,7 +611,7 @@ class Weather_area
   def area_info(pref, city)
     # 都道府県の変換
     case pref
-    when "東京都" || "大阪府" || "京都府" || /県/
+    when "東京都", "大阪府", "京都府", /県/
     else
       case pref
       when "東京"
