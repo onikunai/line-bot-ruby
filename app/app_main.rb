@@ -66,11 +66,10 @@ post '/callback' do
             
             require './app/weather/area'
             weather_area = Weather_area.new
-            area_template = weather_area.prefectures(pref_flag, city)
-            template = area_template.template
+            template = weather_area.prefectures(pref_flag, city)
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
-            pref_flag = area_template.pref_flag
+            # pref_flag = template.pref_flag
 
             # # 確認用
             # message = weather_area.prefectures(pref)
