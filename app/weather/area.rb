@@ -559,10 +559,6 @@ class Weather_area
       text3 = "道央"
       text4 = "道南"
       template = form.template(title, text1, text2, text3, text4)
-      # message = {
-      #   type: 'text',
-      #   text: "北海道は、道北、道東、道央、道南のどれかをメッセージで送信して下さい"
-      # }
     else
       message = {
         type: 'text',
