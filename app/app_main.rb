@@ -49,7 +49,7 @@ post '/callback' do
           if city == '' || city == '次へ' || city == '道北' || city == '道東' || city == '道央' || city == '道南'
             if city == ''
               pref = event.message['text']
-            else city == '道北' || city == '道東' || city == '道央' || city == '道南'
+            elsif city == '道北' || city == '道東' || city == '道央' || city == '道南'
               pref = city
             end
             # text1 = "道北"
