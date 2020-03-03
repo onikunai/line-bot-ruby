@@ -8,9 +8,9 @@ require './app/0form/template'
 # 宣言
 menu_index = ""
 pref = ""
-pref_flag = ""
+# pref_flag = ""
 city = ""
-city_flag = ""
+# city_flag = ""
 form = Form.new
 
 # 微小変更部分！確認用。
@@ -46,10 +46,16 @@ post '/callback' do
           if city == '入力済み'
             city = event.message['text']
           end
-          if city == '' || city == '次へ'
+          if city == '' || city == '次へ' || city == '道北' || city == '道東' || city == '道央' || city == '道南'
             if city == ''
               pref = event.message['text']
+            else city == '道北' || city == '道東' || city == '道央' || city == '道南'
+              pref = city
             end
+            # text1 = "道北"
+            # text2 = "道東"
+            # text3 = "道央"
+            # text4 = "道南"
             # pref_flag = pref 
           
             # 確認用
