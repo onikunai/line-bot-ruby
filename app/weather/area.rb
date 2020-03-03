@@ -604,6 +604,7 @@ class Weather_area
       keyWord = "474010"
     when "与那国島"
       keyWord = "474020"
+    end
   end
 
   # 変換
