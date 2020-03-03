@@ -595,6 +595,7 @@ class Weather_area
     when "豊岡"
       keyWord = "280020"
 
+    end
   end
 
 end
