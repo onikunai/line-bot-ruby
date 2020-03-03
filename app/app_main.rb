@@ -48,7 +48,7 @@ post '/callback' do
           end
           if city == '' || city == '次へ'
             if city == ''
-              pref_flag = event.message['text']
+              pref = event.message['text']
             end
             # pref_flag = pref 
           
@@ -64,7 +64,7 @@ post '/callback' do
             
             require './app/weather/area'
             weather_area = Weather_area.new
-            template = weather_area.prefectures(pref_flag, city)
+            template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
             # pref_flag = template.pref_flag

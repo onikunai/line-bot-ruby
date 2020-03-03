@@ -305,9 +305,9 @@
 # end
 
 class Weather_area
-  def prefectures(pref_flag, city, form = Form.new, title = "地域を選んで下さい")
-    case pref_flag
-    # if文なら pref_flag.include?("道北")
+  def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
+    case pref
+    # if文なら pref.include?("道北")
     when /道北/
       text1 = "稚内"
       text2 = "旭川"
