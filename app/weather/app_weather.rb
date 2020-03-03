@@ -26,10 +26,11 @@ class Weather
   # メイン処理メソッド
   def doProcess()
     # 拠点コード
+    # require './app/weather/area'
+    # weather_area = Weather_area.new
+    # keyWord = weather_area.city_code(city)
     # keyWord = YAML.load_file('./config/config.yml')["location-code"]
-    # keyWord = "130010"
-    weather_area = Weather_area.new
-    keyWord = weather_area.city_code(city)
+    keyWord = "130010"
     # 天気API URL取得
     # url = YAML.load_file('./config/config.yml')["weather-url"]
     url = "http://weather.livedoor.com/forecast/webservice/json/v1"
@@ -83,8 +84,8 @@ class Weather_say
     info = weatherobj.doProcess()
     message = {
       type: 'text',
-      # text: "今日、#{info.today()} 東京の天気です。\n 天気    ：#{info.todayTelop()}\n 最高気温：#{info.todayTempMax()}\n 最低気温：#{info.todayTempMin()}\n\n明日、#{info.tmrw()} 東京の天気です。\n 天気    ：#{info.tmrwTelop()}\n 最高気温：#{info.tmrwTempMax()}\n 最低気温：#{info.tmrwTempMin()}\n【概要】\n #{info.description()}"
-      text: "今日、#{info.today()} #{pref}#{city}市の天気です。\n 天気    ：#{info.todayTelop()}\n 最高気温：#{info.todayTempMax()}\n 最低気温：#{info.todayTempMin()}\n\n明日、#{info.tmrw()} 東京の天気です。\n 天気    ：#{info.tmrwTelop()}\n 最高気温：#{info.tmrwTempMax()}\n 最低気温：#{info.tmrwTempMin()}"
+      text: "今日、#{info.today()} 東京の天気です。\n 天気    ：#{info.todayTelop()}\n 最高気温：#{info.todayTempMax()}\n 最低気温：#{info.todayTempMin()}\n\n明日、#{info.tmrw()} 東京の天気です。\n 天気    ：#{info.tmrwTelop()}\n 最高気温：#{info.tmrwTempMax()}\n 最低気温：#{info.tmrwTempMin()}\n【概要】\n #{info.description()}"
+      # text: "今日、#{info.today()} #{pref}#{city}市の天気です。\n 天気    ：#{info.todayTelop()}\n 最高気温：#{info.todayTempMax()}\n 最低気温：#{info.todayTempMin()}\n\n明日、#{info.tmrw()} 東京の天気です。\n 天気    ：#{info.tmrwTelop()}\n 最高気温：#{info.tmrwTempMax()}\n 最低気温：#{info.tmrwTempMin()}"
     }
   end
 end

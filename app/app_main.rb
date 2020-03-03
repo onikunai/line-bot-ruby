@@ -7,6 +7,10 @@ require './app/0form/template'
 
 # 宣言
 menu_index = ""
+pref = ""
+pref_flag = ""
+city = ""
+city_flag = ""
 form = Form.new
 
 # 微小変更部分！確認用。
@@ -36,34 +40,51 @@ post '/callback' do
       case event.type
       when Line::Bot::Event::MessageType::Text
         # 天気モード
-        if menu_index == "天気"
-          menu_index = ""
+        if menu_index == '天気'
+          # menu_index = ''
 
-          if city = "" || city = "次へ"
-            if city = ""
-              pref = event.message['text']
+          if city == '入力済み'
+            city = event.message['text']
+          end
+          if city == '' || city == '次へ' then
+            if city == '' then
+              pref_flag = event.message['text']
             end
+            # pref_flag = pref 
           
+            # 確認用
+            # if city_flag == '入力済み' then
+            #   client.reply_message(event['replyToken'], message = {
+            #     type: 'text',
+            #     text: pref,
+            #   })
+            # end
+            # -----------------------------------
 
-          # 確認用
-          # client.reply_message(event['replyToken'], message = {
-          #   type: 'text',
-          #   text: pref,
-          # })
-          # -----------------------------------
-
-          require './app/weather/area'
-          weather_area = Weather_area.new
-          template = weather_area.prefectures(pref)
-          # template = weather_area.prefectures(pref, form, text1, text2, text3, text4)
-          client.reply_message(event['replyToken'], template)
-
-          # 確認用
-          # message = weather_area.prefectures(pref)
-          # client.reply_message(event['replyToken'], message)
-          # -----------------------------------
-          else
             
+            require './app/weather/area'
+            weather_area = Weather_area.new
+            template = weather_area.prefectures(pref_flag, city)
+            client.reply_message(event['replyToken'], template)
+            city = '入力済み'
+            pref_flag = template.pref_flag
+
+            # # 確認用
+            # message = weather_area.prefectures(pref)
+            # client.reply_message(event['replyToken'], message)
+            # # -----------------------------------
+
+          # 天気を表示
+          else 
+            # 判定フラグに代入
+            # menu_indexの初期化
+            menu_index = ""
+            #----------------------------
+            require './app/weather/app_weather'
+            weather_say = Weather_say.new
+            message = weather_say.message
+            client.reply_message(event['replyToken'], message)
+
           end
 
         # オウム返しモード
@@ -85,16 +106,21 @@ post '/callback' do
         else
           # 天気:template_prefectures1
           if event.message['text'] == '天気モード'
-            menu_index = "天気"
-            city = ""
+            # 判定フラグに代入
+            menu_index = '天気'
+            city = ''
+            city_flag = ''
+            #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
-              text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県など"
+              text: "都道府県を送信して下さい。\n記入例：道央、東京、大阪など_main.rb内"
             })
 
           # オウム返しモード開始
           elsif event.message['text'] == 'オウム返しモード'
-            menu_index = "オウム返し"
+            # 判定フラグに代入
+            menu_index = 'オウム返し'
+            #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
               text: "オウム返しモードを開始します。\n終了するには、「また明日」と送信して下さい"
@@ -102,7 +128,9 @@ post '/callback' do
 
           #メニュー表示
           else
-            menu_index = ""
+            # 判定フラグに代入
+            menu_index = ''
+            #----------------------------
             title = "メニューを選んで下さい"
             text1 = "天気モード"
             text2 = "オウム返しモード"
@@ -116,7 +144,9 @@ post '/callback' do
 
       # メッセージ以外の対応
       else
-        menu_index = ""
+        # 判定フラグに代入
+        menu_index = ''
+        #----------------------------
         client.reply_message(event['replyToken'], message = {
           type: 'text',
           text: "メッセージのみ対応しています"
