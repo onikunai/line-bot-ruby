@@ -51,6 +51,7 @@ post '/callback' do
               pref = event.message['text']
             elsif city == '道北' || city == '道東' || city == '道央' || city == '道南'
               pref = city
+              city = ''
             end
             # text1 = "道北"
             # text2 = "道東"
