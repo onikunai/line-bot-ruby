@@ -556,7 +556,7 @@ class Weather_area
     when "北海道"
       message = {
         type: 'text',
-        text: "北海道は、例に従ってください。\n例：道北、道東、道央、道南"
+        text: "北海道は、道北、道東、道央、道南のどれかをメッセージで送信して下さい"
       }
     end
     else
