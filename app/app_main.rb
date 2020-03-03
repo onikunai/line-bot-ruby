@@ -8,9 +8,9 @@ require './app/0form/template'
 # 宣言
 menu_index = ""
 pref = ""
-pref_flag = ""
+# pref_flag = ""
 city = ""
-city_flag = ""
+# city_flag = ""
 form = Form.new
 
 # 微小変更部分！確認用。
@@ -46,14 +46,16 @@ post '/callback' do
           if city == '入力済み'
             city = event.message['text']
           end
-          if city == '' || city == '次へ' then
-            if city == '' then
-              pref_flag = event.message['text']
+          if city == '' || city == '次へ' || city == '道北' || city == '道東' || city == '道央' || city == '道南'
+            if city == ''
+              pref = event.message['text']
+            elsif city == '道北' || city == '道東' || city == '道央' || city == '道南'
+              pref = city
+              city = ''
             end
-            # pref_flag = pref 
           
             # 確認用
-            # if city_flag == '入力済み' then
+            # if city == '入力済み' then
             #   client.reply_message(event['replyToken'], message = {
             #     type: 'text',
             #     text: pref,
@@ -61,13 +63,11 @@ post '/callback' do
             # end
             # -----------------------------------
 
-            
             require './app/weather/area'
             weather_area = Weather_area.new
-            template = weather_area.prefectures(pref_flag, city)
+            template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
-            pref_flag = template.pref_flag
 
             # # 確認用
             # message = weather_area.prefectures(pref)
@@ -82,7 +82,7 @@ post '/callback' do
             #----------------------------
             require './app/weather/app_weather'
             weather_say = Weather_say.new
-            message = weather_say.message
+            message = weather_say.message(city)
             client.reply_message(event['replyToken'], message)
 
           end
@@ -113,7 +113,7 @@ post '/callback' do
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
-              text: "都道府県を送信して下さい。\n記入例：道央、東京、大阪など_main.rb内"
+              text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"
             })
 
           # オウム返しモード開始

@@ -305,9 +305,9 @@
 # end
 
 class Weather_area
-  def prefectures(pref_flag, city, form = Form.new, title = "地域を選んで下さい")
-    case pref_flag
-    # if文なら pref_flag.include?("道北")
+  def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
+    case pref
+    # if文なら pref.include?("道北")
     when /道北/
       text1 = "稚内"
       text2 = "旭川"
@@ -553,32 +553,56 @@ class Weather_area
         text4 = "与那国島"
       end
       template = form.template(title, text1, text2, text3, text4)
+    when "北海道"
+      text1 = "道北"
+      text2 = "道東"
+      text3 = "道央"
+      text4 = "道南"
+      template = form.template(title, text1, text2, text3, text4)
     else
       message = {
         type: 'text',
-        text: "都道府県を送信して下さい。\n記入例：道央、東京、大阪など_are.rb内"
+        text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"
       }
     end
   end
 
   # 拠点コード
-  # def city_code(city)
-  #   case city
-  #   # 道北
-  #   when "稚内"
-  #     keyWord = "011000"
-  #   when "旭川"
-  #     keyWord = "012010"
-  #   when "留萌"
-  #     keyWord = "012020"
-  #   # 道東
-  #   when "網走"
-  #     keyWord = "013010"
-  #   when "旭川"
-  #     keyWord = "012010"
-  #   when "留萌"
-  #     keyWord = "012020"
+  def city_code(city)
+    case city
+    # 道北
+    when "稚内"
+      keyWord = "011000"
+    when "旭川"
+      keyWord = "012010"
+    when "留萌"
+      keyWord = "012020"
+    # 道東
+    when "網走"
+      keyWord = "013010"
+    when "旭川"
+      keyWord = "012010"
+    when "留萌"
+      keyWord = "012020"
 
-  # end
+    # 東京都
+    when "東京"
+      keyWord = "130010"
+    when "大島"
+      keyWord = "130020"
+    when "八丈島"
+      keyWord = "130030"
+    when "父島"
+      keyWord = "130040"
+
+    # 兵庫県
+    when "神戸"
+      keyWord = "280010"
+    when "豊岡"
+      keyWord = "280020"
+
+    end
+    # return keyWord
+  end
 
 end
