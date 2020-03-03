@@ -48,9 +48,9 @@ post '/callback' do
           end
           if city == '' || city == '次へ' then
             if city == '' then
-              pref = event.message['text']
+              pref_flag = event.message['text']
             end
-            pref_flag = pref 
+            # pref_flag = pref 
           
             # 確認用
             # if city_flag == '入力済み' then
@@ -67,6 +67,7 @@ post '/callback' do
             template = weather_area.prefectures(pref_flag, city)
             client.reply_message(event['replyToken'], template)
             city = '入力済み'
+            pref_flag = template.pref_flag
 
             # # 確認用
             # message = weather_area.prefectures(pref)
@@ -112,7 +113,7 @@ post '/callback' do
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
-              text: "都道府県を送信して下さい。\n記入例：道央、東京都、兵庫県などmmdfb"
+              text: "都道府県を送信して下さい。\n記入例：道央、東京、大阪など_main.rb内"
             })
 
           # オウム返しモード開始
