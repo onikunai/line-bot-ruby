@@ -42,7 +42,7 @@ post '/callback' do
         if menu_index == '天気'
           # menu_index = ''
 
-          if city == '入力済み'
+          if city == '選び直し'
             city = event.message['text']
           end
           if city == '' || city == '次へ' || city == '道北' || city == '道東' || city == '道央' || city == '道南'
@@ -66,7 +66,7 @@ post '/callback' do
             weather_area = Weather_area.new
             template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
-            city = '入力済み'
+            # city = '入力済み'
 
             # # 確認用
             # message = weather_area.prefectures(pref)
