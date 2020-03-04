@@ -13,7 +13,7 @@ line-botで、「天気モード：天気を知ること」と「オウム返し
 ---
 　LINEアプリの友達検索で「@310ozlsm」と検索するか、下記のQRコードを読み込むことで、利用できます。
 * *画面*
-<img width="720" alt="task_new_2" src='./app/0images/0demo/line_id.png'>
+<img width="240" alt="画像の良い" src='./app/0images/0demo/line_id.png'>
 <br>
 
 ### *MENU*
@@ -21,23 +21,23 @@ line-botで、「天気モード：天気を知ること」と「オウム返し
 　どんなメッセージでも良いので送信をすると、MENU画面が表示されます。使用したいモードをタップして下さい。
 　また、スタンプを送信すると各モードから強制的に抜けることができます。
 * *画面*
-<img width="1440" alt="task_new_2" src='./app/0images/0demo/menu1.jpg'>
+<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/menu1.jpg'>
 <br>
 
 ### *天気モード*
 ---
 　MENU画面の「天気モード」をタップすると、開始されます。日本各地の今日と明日の天気を表示できます。
 * *画面*
-<img width="1440" alt="task_new_2" src='./app/0images/0demo/menu1.jpg'>
+<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/menu1.jpg'>
 <br>
-<img width="1440" alt="task_new_2" src='./app/0images/0demo/menu1.jpg'>
+<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/menu1.jpg'>
 <br>
 
 ### *オウム返しモード*
 ---
 　MENU画面の「オウム返しモード」をタップすると、開始されます。LINE-BOTがオウム返しします。終了するには、「また明日」とメッセージを送信して下さい。
 * *画面*
-<img width="1440" alt="task_new_2" src='./app/0images/0demo/echo1.jpg'>
+<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/echo1.jpg'>
 <br>
 
 ### *注意点*
