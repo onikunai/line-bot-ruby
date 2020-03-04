@@ -1,121 +1,111 @@
-# LINE Messaging API SDK for Ruby onikunai!!
+# **rubyでline-bot**
+line-botで、「天気を知ること」と「オウム返し体験」が出来ます。
 
-[![Gem-version](https://img.shields.io/gem/v/line-bot-api.svg)](https://rubygems.org/gems/line-bot-api) [![Build Status](https://travis-ci.org/line/line-bot-sdk-ruby.svg?branch=master)](https://travis-ci.org/line/line-bot-sdk-ruby)
+1.[MENU](#MENU)  
+2.[デモ画像](#デモ画像)  
+3.[開発環境](#開発環境)  
+4.[DB設計](#DB設計)  
+5.[今後の展開](#今後の展開)  
+6.[製作者](#製作者)
+
+### *MENU*
+---
+　どんなメッセージでも良いので送信をすると、MENU画面が表示されます。
+また、スタンプを送信するとリセットされます。
+* *MENU画面*
+<img width="1440" alt="task_new_2" src='./app/0images/0demo/menu.jpg'>
+<br>
+
+### *デモ画像*
+---
+<!-- ![デモ](https://user-images.githubusercontent.com/58467980/75109626-650a9000-5668-11ea-9ea2-6b366b63afc7.png) -->
+* *タスク入力*
+  * 日程や時間などを入力し保存が行えます
+  * 「今日」入力したものが表示されます
+
+<img width="1440" alt="task_new_2" src="https://user-images.githubusercontent.com/58467980/75649831-a8cc4d80-5c97-11ea-9174-6d7eafd82177.png">
+
+* *今日の予定*
+  * 入力されたタスクの内、日程が「今日」のものを表示します
+
+<img width="1326" alt="task_today_2" src="https://user-images.githubusercontent.com/58467980/75649906-d44f3800-5c97-11ea-87e7-0d435a673943.png">
+
+* *日記一覧*
+  * 各投稿者が1日の出来事を日記にして投稿できます
+
+<img width="1440" alt="diaryimage" src="https://user-images.githubusercontent.com/58467980/75110450-a2bfe680-5671-11ea-849b-b5a4cef8721f.png">
 
 
-## Introduction
-The LINE Messaging API SDK for Ruby makes it easy to develop bots using LINE Messaging API, and you can create a sample bot within minutes.
+### *開発環境*
+---
+* Ruby 2.5.1
+* Ruby on Rails 5.2.3
+* データベース MySQL
+* デプロイ AWS
 
-## Documentation
+<br>
 
-See the official API documentation for more information
+### *DB設計*
+---
 
-- English: https://developers.line.biz/en/docs/messaging-api/overview/
-- Japanese: https://developers.line.biz/ja/docs/messaging-api/overview/
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false|unique: true|
+|password|string|null: false|
+|prefecture_id|integer|null: false|
+|image|string|
 
-Also, generated documentation by YARD is available.
+### Association
+* has_many :tasks
+* has_many :diaries
+* belongs_to_active_hash :prefecture
 
-- https://rubydoc.info/gems/line-bot-api
+## tasksテーブル
+|Column|Type|Options|
+|------|----|-------|
+|day|date|null: false|
+|beforetime_id|integer|
+|aftertime_id|integer|
+|place|string|
+|doing|string|null: false|
+|memo|string|
+|user|references|foreign_key: true|
 
-## Installation
+### Association
+* belongs_to :user
+* belongs_to_active_hash :beforetime
+* belongs_to_active_hash :aftertime
 
-Add this line to your application's Gemfile:
+## diariesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|impression|text|null: false|
+|user|references|foreign_key: true|
 
-```ruby
-gem 'line-bot-api'
-```
+### Association
+* belongs_to :user
 
-And then execute:
+<br>
 
-```sh
-bundle
-```
+### *今後の展開*
+---
+- [ ] タスク編集機能
+- [ ] タスクに優先度のカラムを追加
+- [ ] ソート機能
+- [ ] 日記いいね機能
+- [ ] 日記公開・非公開機能
 
-Or install it yourself as:
+などを実装していきたいと思います。
 
-```sh
-gem install line-bot-api
-```
+<br>
 
-## Synopsis
+### *製作者*
+---
+yukis1996 ゆう  
+Github: https://github.com/yukis1996    
+Twitter: @yu723life
 
-Usage:
 
-```ruby
-# app.rb
-require 'sinatra'
-require 'line/bot'
-
-def client
-  @client ||= Line::Bot::Client.new { |config|
-    config.channel_id = ENV["LINE_CHANNEL_ID"]
-    config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-    config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-  }
-end
-
-post '/callback' do
-  body = request.body.read
-
-  signature = request.env['HTTP_X_LINE_SIGNATURE']
-  unless client.validate_signature(body, signature)
-    error 400 do 'Bad Request' end
-  end
-
-  events = client.parse_events_from(body)
-  events.each do |event|
-    case event
-    when Line::Bot::Event::Message
-      case event.type
-      when Line::Bot::Event::MessageType::Text
-        message = {
-          type: 'text',
-          text: event.message['text']
-        }
-        client.reply_message(event['replyToken'], message)
-      when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
-        response = client.get_message_content(event.message['id'])
-        tf = Tempfile.open("content")
-        tf.write(response.body)
-      end
-    end
-  end
-
-  # Don't forget to return a successful response
-  "OK"
-end
-```
-
-## Help and media
-FAQ: https://developers.line.biz/en/faq/
-
-Community Q&A: https://www.line-community.me/questions
-
-News: https://developers.line.biz/en/news/
-
-Twitter: @LINE_DEV 
-
-## Versioning
-This project respects semantic versioning.
-
-See https://semver.org/
-
-## Contributing
-Please check [CONTRIBUTING](CONTRIBUTING.md) before making a contribution.
-
-## License
-```
-Copyright (C) 2016 LINE Corp.
- 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
- 
-   http://www.apache.org/licenses/LICENSE-2.0
- 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
