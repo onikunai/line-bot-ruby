@@ -67,10 +67,10 @@ post '/callback' do
             weather_area = Weather_area.new
             template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
-            if city_flag == ""
-              city = '入力済み'
-            else 
+            if template == message
               city = ''
+            else 
+              city = '入力済み'
             end
 
             # # 確認用
