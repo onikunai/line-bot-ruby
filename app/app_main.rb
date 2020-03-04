@@ -67,8 +67,8 @@ post '/callback' do
             weather_area = Weather_area.new
             template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
-            if template == message
-              city = ''
+            if template == {type: 'text',text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"}
+              city = ""
             else 
               city = '入力済み'
             end
