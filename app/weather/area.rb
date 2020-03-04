@@ -280,7 +280,7 @@ class Weather_area
         type: 'text',
         text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"
       },
-      city = '選び直し'
+      city_flag = ""
     end
   end
 
