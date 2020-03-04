@@ -1,7 +1,7 @@
 # **rubyでline-bot**
 line-botで、「天気モード：天気を知ること」と「オウム返しモード：オウム返し体験」が出来ます。
 
-1.[LINE_ID](#LINE_ID) 
+1.[LINE-ID](#LINE-ID)  
 2.[MENU](#MENU)  
 3.[天気モード](#天気モード)  
 4.[オウム返しモード](#オウム返しモード)  
@@ -9,11 +9,11 @@ line-botで、「天気モード：天気を知ること」と「オウム返し
 6.[今後の展開](#今後の展開)  
 7.[製作者](#製作者)
 
-### *LINE_ID*
+### *LINE-ID*
 ---
 　LINEアプリの友達検索で「@310ozlsm」と検索するか、下記のQRコードを読み込むことで、利用できます。
 * *画面*
-<img width="1440" alt="task_new_2" src='./app/0images/0demo/line_id.png'>
+<img width="720" alt="task_new_2" src='./app/0images/0demo/line_id.png'>
 <br>
 
 ### *MENU*
@@ -66,8 +66,8 @@ line-botで、「天気モード：天気を知ること」と「オウム返し
 
 ### *製作者*
 ---
-onikunai
-Github: https://github.com/onikunai
-Twitter: @onikunai1
+onikunai  
+Github: https://github.com/onikunai  
+Twitter: @onikunai1  
 
 
