@@ -276,10 +276,10 @@ class Weather_area
     if text1 != ""
       template = form.template(title, text1, text2, text3, text4)
     else
-      message = {
+      return message = {
         type: 'text',
         text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"
-      }
+      },
       city = '選び直し'
     end
   end
