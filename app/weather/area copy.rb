@@ -1,13 +1,13 @@
 class Weather_area
-  def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい", text1 = "")
+  def prefectures(pref, city, form = Form.new, title = "地域を選んで下さい")
     case pref
     # if文なら pref.include?("道北")
-    when "道北"
+    when /道北/
       text1 = "稚内"
       text2 = "旭川"
       text3 = "留萌"
-      text4 = ""
-    when "道東"
+      template = form.template(title, text1, text2, text3)
+    when /道東/
       if city == ""
         text1 = "網走"
         text2 = "北見"
@@ -19,242 +19,228 @@ class Weather_area
         text3 = "帯広"
         text4 = ""
       end
-    when "道央"
+      template = form.template(title, text1, text2, text3, text4)
+    when /道央/
       text1 = "札幌"
       text2 = "岩見沢"
       text3 = "倶知安"
-      text4 = ""
-    when "道南"
+      template = form.template(title, text1, text2, text3)
+    when /道南/
       text1 = "室蘭"
       text2 = "浦河"
       text3 = "函館"
       text4 = "江差"
-    when "青森", "青森県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /青森/
       text1 = "青森"
       text2 = "むつ"
       text3 = "八戸"
-      text4 = ""
-    when "岩手", "岩手県"
+      template = form.template(title, text1, text2, text3)
+    when /岩手/
       text1 = "盛岡"
       text2 = "宮古"
       text3 = "大船渡"
-      text4 = ""
-    when "宮城", "宮城県"
+      template = form.template(title, text1, text2, text3)
+    when /宮城/
       text1 = "仙台"
       text2 = "白石"
-      text3 = ""
-      text4 = ""
-    when "秋田", "秋田県"
+      template = form.template(title, text1, text2)
+    when /秋田/
       text1 = "秋田"
       text2 = "横手"
-      text3 = ""
-      text4 = ""
-    when "山形", "山形県"
+      template = form.template(title, text1, text2)
+    when /山形/
       text1 = "山形"
       text2 = "米沢"
       text3 = "酒田"
       text4 = "新庄"
-    when "福島", "福島県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /福島/
       text1 = "福島"
       text2 = "小名浜"
       text3 = "若松"
-      text4 = ""
-    when "茨城", "茨城県"
+      template = form.template(title, text1, text2, text3)
+    when /茨城/
       text1 = "水戸"
       text2 = "土浦"
-      text3 = ""
-      text4 = ""
-    when "栃木", "栃木県"
+      template = form.template(title, text1, text2)
+    when /栃木/
       text1 = "宇都宮"
       text2 = "大田原"
-      text3 = ""
-      text4 = ""
-    when "群馬", "群馬県"
+      template = form.template(title, text1, text2)
+    when /群馬/
       text1 = "前橋"
       text2 = "みなかみ"
-      text3 = ""
-      text4 = ""
-    when "埼玉", "埼玉県"
+      template = form.template(title, text1, text2)
+    when /埼玉/
       text1 = "さいたま"
       text2 = "熊谷"
       text3 = "秩父"
-      text4 = ""
-    when "千葉", "千葉県"
+      template = form.template(title, text1, text2, text3)
+    when /千葉/
       text1 = "千葉"
       text2 = "銚子"
       text3 = "館山"
-      text4 = ""
-    when "東京", "東京都"
+      template = form.template(title, text1, text2, text3)
+    when /東京/
       text1 = "東京"
       text2 = "大島"
       text3 = "八丈島"
       text4 = "父島"
-    when "神奈川", "神奈川県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /神奈川/
       text1 = "横浜"
       text2 = "小田原"
-      text3 = ""
-      text4 = ""
-    when "新潟", "新潟県"
+      template = form.template(title, text1, text2)
+    when /新潟/
       text1 = "新潟"
       text2 = "長岡"
       text3 = "高田"
       text4 = "相川"
-    when "富山", "富山県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /富山/
       text1 = "富山"
       text2 = "伏木"
-      text3 = ""
-      text4 = ""
-    when "石川", "石川県"
+      template = form.template(title, text1, text2)
+    when /石川/
       text1 = "金沢"
       text2 = "輪島"
-      text3 = ""
-      text4 = ""
-    when "福井", "福井県"
+      template = form.template(title, text1, text2)
+    when /福井/
       text1 = "福井"
       text2 = "敦賀"
-      text3 = ""
-      text4 = ""
-    when "山梨", "山梨県"
+      template = form.template(title, text1, text2)
+    when /山梨/
       text1 = "甲府"
       text2 = "河口湖"
-      text3 = ""
-      text4 = ""
-    when "長野", "長野県"
+      template = form.template(title, text1, text2)
+    when /長野/
       text1 = "長野"
       text2 = "松本"
       text3 = "飯田"
-      text4 = ""
-    when "岐阜", "岐阜県"
+      template = form.template(title, text1, text2, text3)
+    when /岐阜/
       text1 = "岐阜"
       text2 = "高山"
-      text3 = ""
-      text4 = ""
-    when "静岡", "静岡県"
+      template = form.template(title, text1, text2)
+    when /静岡/
       text1 = "静岡"
       text2 = "網代"
       text3 = "三島"
       text4 = "浜松"
-    when "愛知", "愛知県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /愛知/
       text1 = "名古屋"
       text2 = "豊橋"
-      text3 = ""
-      text4 = ""
-    when "三重", "三重県"
+      template = form.template(title, text1, text2)
+    when /三重/
       text1 = "津"
       text2 = "尾鷲"
-      text3 = ""
-      text4 = ""
-    when "滋賀", "滋賀県"
+      template = form.template(title, text1, text2)
+    when /滋賀/
       text1 = "大津"
       text2 = "彦根"
-      text3 = ""
-      text4 = ""
-    when "京都", "京都府"
+      template = form.template(title, text1, text2)
+    when /京都/
       text1 = "京都"
       text2 = "舞鶴"
-      text3 = ""
-      text4 = ""
-    when "大阪", "大阪府"
+      template = form.template(title, text1, text2)
+    when /大阪/
       text1 = "大阪"
-      text2 = ""
-      text3 = ""
-      text4 = ""
-    when "兵庫", "兵庫県"
+      template = form.template(title, text1)
+    when /兵庫/
       text1 = "神戸"
       text2 = "豊岡"
-      text3 = ""
-      text4 = ""
-    when "奈良", "奈良県"
+      template = form.template(title, text1, text2)
+    when /奈良/
       text1 = "奈良"
       text2 = "風屋"
-      text3 = ""
-      text4 = ""
-    when "和歌山", "和歌山県"
+      template = form.template(title, text1, text2)
+    when /和歌山/
       text1 = "和歌山"
       text2 = "潮岬"
-      text3 = ""
-      text4 = ""
-    when "鳥取", "鳥取県"
+      template = form.template(title, text1, text2)
+    when /鳥取/
       text1 = "鳥取"
       text2 = "米子"
-      text3 = ""
-      text4 = ""
-    when "島根", "島根県"
+      template = form.template(title, text1, text2)
+    when /島根/
       text1 = "松江"
       text2 = "浜田"
       text3 = "西郷"
-      text4 = ""
-    when "岡山", "岡山県"
+      template = form.template(title, text1, text2, text3)
+    when /岡山/
       text1 = "岡山"
       text2 = "津山"
-      text3 = ""
-      text4 = ""
-    when "広島", "広島県"
+      template = form.template(title, text1, text2)
+    when /広島/
       text1 = "広島"
       text2 = "庄原"
-      text3 = ""
-      text4 = ""
-    when "山口", "山口県"
+      template = form.template(title, text1, text2)
+    when /山口/
       text1 = "下関"
       text2 = "山口"
       text3 = "柳井"
       text4 = "萩"
-    when "徳島", "徳島県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /徳島/
       text1 = "徳島"
       text2 = "日和佐"
-      text3 = ""
-      text4 = ""
-    when "香川", "香川県"
+      template = form.template(title, text1, text2)
+    when /香川/
       text1 = "高松"
-      text2 = ""
-      text3 = ""
-      text4 = ""
-    when "愛媛", "愛媛県"
+      template = form.template(title, text1)
+    when /愛媛/
       text1 = "松山"
       text2 = "新居浜"
       text3 = "宇和島"
-      text4 = ""
-    when "高知", "高知県"
+      template = form.template(title, text1, text2, text3)
+    when /高知/
       text1 = "高知"
       text2 = "室戸岬"
       text3 = "清水"
-      text4 = ""
-    when "福岡", "福岡県"
+      template = form.template(title, text1, text2, text3)
+    when /福岡/
       text1 = "福岡"
       text2 = "八幡"
       text3 = "飯塚"
       text4 = "久留米"
-    when "佐賀", "佐賀県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /佐賀/
       text1 = "佐賀"
       text2 = "伊万里"
-      text3 = ""
-      text4 = ""
-    when "長崎", "長崎県"
+      template = form.template(title, text1, text2)
+    when /長崎/
       text1 = "長崎"
       text2 = "佐世保"
       text3 = "厳原"
       text4 = "福江"
-    when "熊本", "熊本県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /熊本/
       text1 = "熊本"
       text2 = "阿蘇乙姫"
       text3 = "牛深"
       text4 = "人吉"
-    when "大分", "大分県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /大分/
       text1 = "大分"
       text2 = "中津"
       text3 = "日田"
       text4 = "佐伯"
-    when "宮崎", "宮崎県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /宮崎/
       text1 = "宮崎"
       text2 = "延岡"
       text3 = "都城"
       text4 = "高千穂"
-    when "鹿児島", "鹿児島県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /鹿児島/
       text1 = "鹿児島"
       text2 = "鹿屋"
       text3 = "種子島"
       text4 = "名瀬"
-    when "沖縄", "沖縄県"
+      template = form.template(title, text1, text2, text3, text4)
+    when /沖縄/
       if city == ""
         text1 = "那覇"
         text2 = "名護"
@@ -266,14 +252,12 @@ class Weather_area
         text3 = "石垣島"
         text4 = "与那国島"
       end
+      template = form.template(title, text1, text2, text3, text4)
     when "北海道"
       text1 = "道北"
       text2 = "道東"
       text3 = "道央"
       text4 = "道南"
-    end
-
-    if text1 != ""
       template = form.template(title, text1, text2, text3, text4)
     else
       message = {

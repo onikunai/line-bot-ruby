@@ -9,6 +9,7 @@ require './app/0form/template'
 menu_index = ""
 pref = ""
 city = ""
+city_flag = ""
 area_info = ""
 form = Form.new
 
@@ -66,7 +67,11 @@ post '/callback' do
             weather_area = Weather_area.new
             template = weather_area.prefectures(pref, city)
             client.reply_message(event['replyToken'], template)
-            city = '入力済み'
+            if template == {type: 'text',text: "都道府県を送信して下さい。\n例：東京、大阪、兵庫、道中など"}
+              city = ""
+            else 
+              city = '入力済み'
+            end
 
             # # 確認用
             # message = weather_area.prefectures(pref)
@@ -107,8 +112,8 @@ post '/callback' do
           if event.message['text'] == '天気モード'
             # 判定フラグに代入
             menu_index = '天気'
-            city = ''
-            city_flag = ''
+            city = ""
+            city_flag = ""
             #----------------------------
             client.reply_message(event['replyToken'], message = {
               type: 'text',
