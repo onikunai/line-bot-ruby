@@ -28,9 +28,9 @@ line-botで、「天気モード：天気を知ること」と「オウム返し
 ---
 　MENU画面の「天気モード」をタップすると、開始されます。日本各地の今日と明日の天気を表示できます。
 * *画面*
-<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/menu1.jpg'>
+<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/weather1.jpg'>
 <br>
-<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/menu1.jpg'>
+<img width="1440" alt="画像の読み込み失敗" src='./app/0images/0demo/weather2.jpg'>
 <br>
 
 ### *オウム返しモード*
