@@ -67,6 +67,5 @@ line-botで、「天気モード：天気を知ること」と「オウム返し
 ---
 onikunai  
 Github: https://github.com/onikunai  
-Twitter: @onikunai1  
 
 
