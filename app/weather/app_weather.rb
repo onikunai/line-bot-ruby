@@ -34,7 +34,9 @@ class Weather
     # url = YAML.load_file('./config/config.yml')["weather-url"]
     # url = "http://weather.livedoor.com/forecast/webservice/json/v1"
     # url = "https://weather.tsukumijima.net/api/forecast"
-    url = "https://weather.tsukumijima.net/api/forecast/city"
+    # URL:https://creepfablic.site/2021/11/14/python-weather-api/
+    # URL:https://weather.tsukumijima.net/
+    url = "https://weather.tsukumijima.net/api/forecast/city/"
     # url = "https://weather.tsukumijima.net/api/forecast?city="
     return analysisWeather(connectionAPI(keyWord, url))
   end
